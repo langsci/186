@@ -14,7 +14,7 @@ To explore this question I look at three different phenomena in this chapter: Sw
 Swahili, like other Bantu languages, has a noun class 
 system in which all nouns belong to a specific, partially conditioned, class. Traditional Swahili grammars list eleven main classes for Swahili nouns, which are presented in \tabref{tab:swahili-classes}.\footnote{I have omitted classes 14 (abstractions), 15 (verbal infinitives) and 16-18 (locatives). For classes 9 and 10, \textit{N} represents three possible markers: \textit{n-}, \textit{ny-} or \textit{m-}.} These classes are defined by a prefix on the noun and can mark either singular or plural. For the most part, noun classes are lexically determined, with a few classes being determined by derivational morphemes (diminutives, etc.). %complete
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lll}
     \lsptoprule
@@ -62,7 +62,7 @@ The class marker \textit{ki} agrees with the verb, noun, adjective and determine
 
 Thus, grouping the singular and plural forms we get the six genders (the  original proposal in \textcite[47]{Corbett.1991} suggests seven) in \tabref{tab:genders-swahili}.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lll}
     \lsptoprule
@@ -109,7 +109,7 @@ With all these rules combined, we have a system where we expect that phonologica
 
 I compiled a list of Swahili nouns with their corresponding classes by combining the list given in the Wiktionary page for Swahili \autocite{WikimediaFundation.2016}, and extracting all the nouns for which class information is available in the \textit{Mgombato: Digo-English-Swahili Dictionary} \autocite{Mwalonya.2004}. Because the extraction from the Swahili dictionary relied on optical character recognition, there is some degree of noise in the data. I removed all clear errors of nouns containing punctuation marks. The result is 3081 nouns, distributed as shown in \figref{fig:class-freq-swahili}. There were not enough \textit{u-} marked nouns to properly work with the 11/10 gender.
 
-\begin{figure}[!htpb]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{./figures/swahili/freq-plot.pdf}
   \caption{Type frequency of Swahili genders.}\label{fig:class-freq-swahili}
@@ -123,7 +123,7 @@ In terms of pre-processing, Swahili has a series of digraphs (e.g. \textit{mb} $
 
 In our first model we investigate whether the first and second segments of the stem (that is, after removing the class prefixes) can predict to any degree the inflectional class of Swahili nouns with the model \texttt{class $\sim$ first.1 + first.2}.\footnote{With 0 hidden nodes and a decay rate of 0.1. A more complex model with interactions did not perform any better.} The results, shown in \tabref{tab:class-swa} and \tabref{tab:class-swa-stats}, are not very good in themselves. The accuracy is barely above chance, and the kappa score is very small. This basically means that there is very little information about inflection class just in the phonological shape of the stem. But this result is not really surprising. Swahili speakers encounter nouns with the prefix or some agreeing forms, and there is little ambiguity about their class.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{rrrrrr}
     \lsptoprule
@@ -140,7 +140,7 @@ In our first model we investigate whether the first and second segments of the s
   \caption{Confusion Matrix for the model predicting inflection class of Swahili nouns.}\label{tab:class-swa}
 \end{table}
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lllrrr}
     \lsptoprule
@@ -158,7 +158,7 @@ In our first model we investigate whether the first and second segments of the s
 
 Next, we compare this model to one where we use the endings of the nouns instead of the initial segments, as shown in \tabref{tab:class-swa-last}. In this model we see performance at chance level.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{rrrrrr}
     \lsptoprule
@@ -175,7 +175,7 @@ Next, we compare this model to one where we use the endings of the nouns instead
   \caption{Confusion Matrix for the model predicting inflection class of Swahili nouns.}\label{tab:class-swa-last}
 \end{table}
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lllrrr}
     \lsptoprule
@@ -193,7 +193,7 @@ Next, we compare this model to one where we use the endings of the nouns instead
 Finally, we try a model that combines the first two segments of the noun, the last segment, and length in letters with the formula: \texttt{class $\sim$ final.1 + first.1 + first.2 + length}. The results are presented in \tabref{tab:class-swa-last-first} and \tabref{tab:class-swa-last-first-stats}. This model shows a slight improvement from the model only using the first segments.
 
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{rrrrrr}
     \lsptoprule
@@ -210,7 +210,7 @@ Finally, we try a model that combines the first two segments of the noun, the la
   \caption{Confusion Matrix for the model predicting inflection class of Swahili nouns.}\label{tab:class-swa-last-first}
 \end{table}
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lllrrr}
     \lsptoprule
@@ -225,10 +225,11 @@ Finally, we try a model that combines the first two segments of the noun, the la
   \caption{Overall statistics for Confusion Matrix in \tabref{tab:class-swa-last-first}.}\label{tab:class-swa-last-first-stats}
 \end{table}
 
+\clearpage 
 The overall evaluation of this final model can be seen in \figref{fig:overall-fi-class-sg-swahili}. 
 This figure basically shows that the main effect comes from the first segment, but that the other factors still play a minor role.
 
-\begin{figure}[!htpb]
+\begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./figures/swahili/p-fi-overall.pdf}
     \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the model predicting gender in Swahili.}\label{fig:overall-fi-class-sg-swahili}
@@ -253,7 +254,7 @@ Eastern Highland Otomi (Otomi from now on) is a Mesoamerican language of the Oto
 % Otomí orthography has 13 vowels and 20 consonants. ʉøëẹạ aeiou
 The verbs are organized in four classes according to \textcite{Echegoyen.1979}, and five classes according to \textcite{Feist.2015}. Examples of these classes can be found in \tabref{tab:class-otomi}.
 
-\begin{table}[!htpb]
+\begin{table}
     \centering
     \footnotesize
   \begin{tabular}{lllllll}
@@ -299,7 +300,7 @@ For this case study I used the inflection class database by \textcite{Feist.2015
 
 In terms of complexity, the model for Otomi is probably the one with the most factors. As predictors, I included the first three segments (with an interaction between the first and second segment), the last two segments, the tone of the citation form, and whether the verb is transitive or not: \texttt{class $\sim$ first.1 * first.2 + first.3 + Transitivity + last.1 + last.2 + tone}.\footnote{The model contained no hidden nodes and a decay rate of 0.1.} The confusion matrix for this model is shown in \tabref{tab:class-otomi-cm} and the accuracy measures in \tabref{tab:class-otomi-stats}.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{lrrrrr}
     \lsptoprule
@@ -319,7 +320,7 @@ In terms of complexity, the model for Otomi is probably the one with the most fa
 
 We see that classes are mostly predictable for Otomi, but there is some degree of confusion. The accuracy metrics show that \textit{class-Ia} is receiving most of the miss-classifications, which is to be expected, this being the most frequent class. Interestingly, \textit{class-Ib} is only mildly confused with \textit{class-Ia}, and much more confused with \textit{class-III}.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{rlllll}
     \lsptoprule
@@ -345,7 +346,7 @@ We see that classes are mostly predictable for Otomi, but there is some degree o
 
 The important fact regarding Otomi is the relative effects of the different factors. In Swahili we saw that both the first segments and final segment of the nouns carried some information about gender. In this case, we have more or less the same situation. \figref{fig:fact-imp-otomi} shows the additive and subtractive model evaluation plots. On the left, we see that all factors used provide small increases to model performance. Moreover, on the right, we see that the two most important factors were the interaction between the first two segments of the verb and the verb's transitivity. The interesting thing to note is that the first segments were much more important for predicting inflection class than the final segments.
 
-\begin{figure}[!htpb]
+\begin{figure}
   \centering
   \includegraphics[width=0.9\textwidth]{./figures/otomi/fact-imp.pdf}
   \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the model predicting inflection class.}\label{fig:fact-imp-otomi}
@@ -363,7 +364,7 @@ Once more, classes that trigger prefixing processes are predictable from analogi
 
 The Hausa plural system is too complex to be fully explored here, but some of its properties are relevant to the overall theme of this chapter. First, there seems to be little agreement with regards to how many plural classes there are in Hausa, and an analysis could go anywhere between ``many'' \autocite{Migeod.1914}, around thirty \autocite{Schon.1862}, to twenty macro-classes \autocite{Newman.2000}, or the many more sub-classes Newman identifies. For this study I follow the macro-classes defined by \textcite{Newman.2000}, which are given in \tabref{tab:macro-hausa}\footnote{Because the dictionary I use for the data \autocite{Bargery.1951} does not distinguish between the retroflex and rolled \textit{r}, and between long and short vowels, I will not mark these features here. For tone representation I follow \textcite{Newman.2000}, with high tone unmarked, low tone marked with a grave accent, and falling tone with a circumflex accent.}.
 
-\begin{table}[!htpb]
+\begin{table}
   \centering
   \begin{tabular}{llll}
     \lsptoprule
@@ -405,7 +406,7 @@ Similarly, in cases where the dictionary offered multiple possible singulars for
 
 Identifying plural classes automatically in Hausa is not a trivial task, and it is not completely clear how many examples fit into \textcite{Newman.2000}'s macro-classes. I followed the definitions as given in \tabref{tab:macro-hausa}. Although this approach is likely to produce some errors, it should mostly give us the right classification. The main difference in the classes I use is that I take four reduplication classes instead of the three listed in \tabref{tab:macro-hausa}: \textit{class-RED-e} and \textit{class-RED-comp} correspond to the \textit{class-X2} and \textit{class-e2} classes identified by \textcite{Newman.2000}. I included \textit{class-RED-id} which consists of cases where the plural is the reduplication of the singular form without additional changes, and a general \textit{class-RED} class with all the cases that do not quite fit into any of the other classes. The \textit{class-ce2} did not have enough members to be usable. Finally, an extra class I include is \textit{class-oi}, which is not explicitly mentioned by \textcite{Newman.2000}, but which had enough members to be distinguished as an independent macro-class. We can see the frequencies of the classes in the data-set in \figref{fig:class-hausa-freqs}.
 
-\begin{figure}[!htpb]
+\begin{figure}
   \includegraphics[width=0.9\textwidth]{./figures/hausa/class-freqs.pdf}
   \caption{Type frequency of macro-classes in Hausa.}\label{fig:class-hausa-freqs}
 \end{figure}
@@ -420,12 +421,17 @@ First we look at a model predicting the plural class from structurally defined p
 
 The results of this model can be seen in \figref{fig:class-hausa-cm} and the corresponding statistics are presented in \tabref{tab:class-hausa-stats}. We see that most classes can be predicted to a relatively high degree of accuracy. There is a clear darker trace along the main diagonal in \figref{fig:class-hausa-cm}, but with some noise for most classes.\footnote{Because the numbers used for shading are log scaled from the actual confusion matrix, the error rates appear slightly higher than they actually are.} In the table there are errors across most classes with no clear structure to them, besides some apparent foci (\textit{class--a-a}, \textit{class--a-e}, \textit{class--ai}, \textit{class--Cai} and \textit{class--oCi}). The accuracy statistics do reveal that the model is performing well above chance, and that there is a significant analogical relation between these classes.
 
-\begin{figure}[!htpb]
+
+For comparison, a model that does not specify structural analogy: \texttt{plural class $\sim$ final.1*T.1 + final.2 + final.3 + CVCV.4 + length}\footnote{The model included no hidden nodes and a decay rate of 0.1.}, can be seen in \tabref{tab:class-hausa-stats-2}. It is not surprising that this model also performs relatively well, after all, the predictor \texttt{final.1} captures the same information as the predictor \texttt{V.1}.
+\largerpage
+
+
+\begin{figure}[h!]
   \includegraphics[width=0.9\textwidth]{./figures/hausa/plurals-cm.pdf}
   \caption{Heatmap for the model predicting plural forms in Hausa.}\label{fig:class-hausa-cm}
 \end{figure}
 
-\begin{table}[!htpb]
+\begin{table}[h!]
   \centering
   \begin{tabular}{rl}
     \toprule
@@ -440,9 +446,7 @@ The results of this model can be seen in \figref{fig:class-hausa-cm} and the cor
   \caption{Accuracy scores for \figref{fig:class-hausa-cm}.}\label{tab:class-hausa-stats}
 \end{table}
 
-For comparison, a model that does not specify structural analogy: \texttt{plural class $\sim$ final.1*T.1 + final.2 + final.3 + CVCV.4 + length}\footnote{The model included no hidden nodes and a decay rate of 0.1.}, can be seen in \tabref{tab:class-hausa-stats-2}. It is not surprising that this model also performs relatively well, after all, the predictor \texttt{final.1} captures the same information as the predictor \texttt{V.1}.
-
-\begin{table}[!htpb]
+\begin{table}[h!]
   \centering
   \begin{tabular}{rl}
     \lsptoprule
@@ -456,15 +460,16 @@ For comparison, a model that does not specify structural analogy: \texttt{plural
   \end{tabular}
   \caption{Accuracy scores for the non-structurally defined model.}\label{tab:class-hausa-stats-2}
 \end{table}
+\clearpage 
 
 We can compare model performance for both models (\figref{fig:struc-overall} and \figref{fig:nostruc-overall}). These evaluations reveal that indeed \texttt{final.1} and \texttt{V.1} have more or less the same impact on the model, but for the non-structurally defined model all other predictors become rather insignificant in the subtractive evaluation. The segments captured by both models are the same, but the additional structure does clearly play a role.
 
-\begin{figure}[!htpb]
+\begin{figure}
     \centering  \includegraphics[width=0.9\textwidth]{./figures/hausa/struc-overall.pdf}
     \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the structurally defined model.}\label{fig:struc-overall}
 \end{figure}
 
-\begin{figure}[!htpb]
+\begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{./figures/hausa/nostruc-overall.pdf}
     \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the non-structurally defined model.}\label{fig:nostruc-overall}
