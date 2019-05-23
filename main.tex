@@ -7,8 +7,8 @@
 % Some lines start with %. Remove the % to include them
 
 \documentclass[output=book,nonflat,modfonts,
-  colorlinks,citecolor=brown, 
- draft,draftmode,  
+%   colorlinks,citecolor=brown, 
+%  draft,draftmode,  
 %  showindex,
 %  nobabel,
 %  booklanguage=german,
@@ -30,7 +30,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%             Frontmatter                      %%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\includeonly{chapters/07-complex-infl-classes}
+% \includeonly{chapters/08-conclusion}
 \begin{document} 
  
 \input{localcommands.tex} 
@@ -57,23 +57,11 @@
 \include{chapters/05-hybrid}
 \include{chapters/06-structural-analogy}
 \include{chapters/07-complex-infl-classes}
-\include{chapters/08-conclusion} 
-  
-% % copy the lines above and adapt as necessary
-
+\include{chapters/08-conclusion}  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%             Backmatter                       %%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\input{localseealso.tex} 
-% There is normally no need to change the backmatter section
+  
+\sloppy
 \input{backmatter.tex} 
-\end{document} 
-
-% you can create your book by running
-% xelatex main.tex 
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
+\end{document}  
