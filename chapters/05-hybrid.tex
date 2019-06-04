@@ -11,9 +11,9 @@ In \textsc{bcs} (Bosnian, Croatian and Serbian), a number of masculine nouns bel
 \begin{exe}
     \ex \label{exe-over-croat}
     \begin{xlist}
-        \ex grad-\textbf{om} `city'-\textsc{instr}
-        \ex muž-\textbf{em} `man'-\textsc{instr}
-        \ex princ-\textbf{om}/princ-\textbf{em} `prince'-\textsc{instr}
+        \ex grad-\textit{om} `city'-\textsc{instr}
+        \ex muž-\textit{em} `man'-\textsc{instr}
+        \ex princ-\textit{om}/princ-\textit{em} `prince'-\textsc{instr}
     \end{xlist}
 \end{exe}
 
@@ -22,12 +22,13 @@ Importantly, not all nouns can alternate between the two markers:
 \begin{exe}
     \ex \label{no-over-croat}
     \begin{xlist}
-        \ex kej-om `river bank'-\textsc{instr}
-        \ex * kej-em
-        \ex muž-em `man'-\textsc{instr}
-        \ex * muž-om
+        \ex[] {kej-om `river bank'-\textsc{instr}}
+        \ex[*] {kej-em}
+        \ex[] {muž-em `man'-\textsc{instr}}
+        \ex[*] {muž-om}
     \end{xlist}
 \end{exe}
+
 
 A rule of thumb for class assignment has been proposed in the literature already: ``nouns ending in a palatal phoneme use \textit{-em}, whereas all other nouns use \textit{-om}. However, although this rule seems reasonably straightforward, there are some environments where doublets occur'' \autocite[377]{Lecic.2015}. Diachronically, this overabundance \autocites{Thornton.2011, Thornton.2010a}, emerged due to the collapse of an older palatal \textit{/r$^j$/}, which justified the use of \textit{-em}, with a modern non-palatal \textit{/r/} which justifies the use of \textit{-om} \autocite{Lecic.2015}. \textcite{Mladenovic.1977} (as cited by \citealt{Lecic.2015}) claims that \textit{-om} is spreading to contexts where \textit{-em} would be historically used.
 %\textcite{Lecic.2015}, regarding some triggers that have been suggested previously (no references are given) for the preference of one or the other in a given syntactic context seem to not be born out in the corpus he studied.
@@ -45,7 +46,8 @@ As can be seen the idea that analogical relations help predict this particular a
 One approach how to model overabundance with type hierarchies can be achieved by employing hybridization \autocite{GuzmanNaranjo.2016}. Hybridization assumes that there are two basic types, \textit{exclusively-em} and \textit{exclusively-om}. Nouns of type \textit{exclusively-em} can only take the marker \textit{-em} and similarly for \textit{exclusively-om}. Nouns of a hybrid type \textit{em$\sim$om} can take either \textit{-em} or \textit{-om}. This hybrid type is related to the other two types as shown in \figref{fig:hybrid-bcs}.
 
 \begin{figure}
-    \caption{Hybridization in \textsc{bcs} nouns.} \label{fig:hybrid-bcs} \begin{forest} baseline, qtree edges, l sep+=2em, for children={
+    \caption{Hybridization in \textsc{bcs} nouns} \label{fig:hybrid-bcs} \begin{forest} baseline, %qtree edges, 
+    l sep+=2em, for children={
           l sep+=2em,
         },
         for tree={
@@ -55,9 +57,9 @@ One approach how to model overabundance with type hierarchies can be achieved by
           inner sep=1pt,
         }
         [sg.ins
-        [om, name=EM [excl-em [muž\\(`man')] [kazalište\\(`theater')]]
-        [em$\sim$om, name=EMOM [princ\\(`prince')] [car\\(`emperor')]]]
-        [em , name=OM [, no edge] [, no edge] [excl-om[kej\\(`river bank')] [konobar\\(`waiter')]]]
+        [om, name=EM [excl-em [muž\\`man'] [kazalište\\`theater']]
+        [em$\sim$om, name=EMOM [princ\\`prince'] [car\\`emperor']]]
+        [em , name=OM [, no edge] [, no edge] [excl-om[kej\\`river bank'] [konobar\\`waiter']]]
         ]
         \draw (EMOM.north) -- (OM.south);
     \end{forest}
@@ -81,7 +83,7 @@ The prediction this approach makes is that we expect the confusion between \text
 
 \subsection{Materials}
 
-I extracted all 13227319 instances of instrumental singular nouns from the Web Corpus of Croatian, Bosnian and Serbian \autocite{ljubesic14-bs} (1.9 billion tokens). From these, 6575746 are masculine nouns. After removing clear mistakes (punctuation marks, etc.), the total  number of types was 227263. The number of types which appeared with either \textit{-em} or \textit{-om}, or both was 186443. The final data-set (after removing cases that appeared with multiple spellings) contained 180987 nouns, with 39245 nouns (22\%) taking \textit{-em}, 137290 nouns (76\%) taking \textit{-om}, and 4452 nouns (2\%) taking both markers. Because we cannot know from a corpus whether a noun is \textbf{not} over abundant, there is always the risk of have many false negatives, particularly in the lower frequency cases (since it is possible that they are overabundant but there were not enough cases in the corpus for it to appear with both markers). There is a large imbalance in the type frequency of each of the three classes. I only used \textit{-em} nouns with a frequency of more than 60, \textit{-om} nouns with a frequency of more than 500, and \textit{-em/-om} nouns with a frequency of more than 100 to address both problems. This process produces a dataset with 3138 \textit{-om} nouns, 2056 \textit{-em} nouns and 1293 \textit{-em/-om} nouns. These numbers are somewhat arbitrary, but they produce a more balanced sample and help control for false negatives. By selecting only the more frequent nouns, there is a higher probability that the class assignment is correct.
+I extracted all 13227319 instances of instrumental singular nouns from the Web Corpus of Croatian, Bosnian and Serbian \autocite{ljubesic14-bs} (1.9 billion tokens). From these, 6575746 are masculine nouns. After removing clear mistakes (punctuation marks, etc.), the total  number of types was 227263. The number of types which appeared with either \textit{-em} or \textit{-om}, or both was 186443. The final data-set (after removing cases that appeared with multiple spellings) contained 180987 nouns, with 39245 nouns (22\%) taking \textit{-em}, 137290 nouns (76\%) taking \textit{-om}, and 4452 nouns (2\%) taking both markers. Because we cannot know from a corpus whether a noun is \textit{not} over abundant, there is always the risk of have many false negatives, particularly in the lower frequency cases (since it is possible that they are overabundant but there were not enough cases in the corpus for it to appear with both markers). There is a large imbalance in the type frequency of each of the three classes. I only used \textit{-em} nouns with a frequency of more than 60, \textit{-om} nouns with a frequency of more than 500, and \textit{-em/-om} nouns with a frequency of more than 100 to address both problems. This process produces a dataset with 3138 \textit{-om} nouns, 2056 \textit{-em} nouns and 1293 \textit{-em/-om} nouns. These numbers are somewhat arbitrary, but they produce a more balanced sample and help control for false negatives. By selecting only the more frequent nouns, there is a higher probability that the class assignment is correct.
 
 I take the stem of the nouns to be the instrumental singular minus the \textit{-em} or \textit{-om} endings. I performed no orthography corrections for this data-set.
 
@@ -101,7 +103,7 @@ The model is rather simple for this case. The predictors are the last two segmen
     om         & \textbf{22}  & \textbf{346} & 2925         \\
     \lspbottomrule
   \end{tabular}
-  \caption{Confusion Matrix for the model predicting instrumental singular in Croatian nouns.}\label{tab:ins-cro}
+  \caption{Confusion Matrix for the model predicting instrumental singular in Croatian nouns}\label{tab:ins-cro}
 \end{table}
 
 \begin{table}
@@ -116,13 +118,13 @@ The model is rather simple for this case. The predictors are the last two segmen
     Kappa : 0.7051               \\
     \lspbottomrule
   \end{tabular}
-  \caption{Overall statistics for Confusion Matrix \tabref{tab:ins-cro}.}\label{tab:ins-cro-stats}
+  \caption{Overall statistics for Confusion Matrix \tabref{tab:ins-cro}}\label{tab:ins-cro-stats}
 \end{table}
 
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./figures/croatian/factimp-plot.pdf}
-    \caption{Additive (left) and subtractive (right) accuracy and kappa scores for for the model predicting Croatian instrumental.}\label{fig:factimp-plot-croatian}
+    \caption{Additive (left) and subtractive (right) accuracy and kappa scores for for the model predicting Croatian instrumental}\label{fig:factimp-plot-croatian}
 \end{figure}
 
 We see that the model does predict fairly well the declension class of these nouns, although it makes a large number of mistakes when predicting \textit{-em/-om}. Most relevant here is the degree of confusion between the three classes. It can be observed that \textit{excl-om} and \textit{excl-em} have a small rate of confusion between them. The greater amount of confusion is between \textit{em}$\sim$\textit{om} and \textit{excl-em}, and \textit{em}$\sim$\textit{om} and \textit{excl-om}. This is shown more clearly in \figref{fig:croatian-results}. The Y axis shows the percentage of predicted classes for each class. We see here that  \textit{excl-em} is rarely predicted to be  \textit{excl-om} and viceversa. Meanwhile, \textit{em}$\sim$\textit{om} is often predicted to be \textit{excl-em} and \textit{excl-om}.
@@ -130,7 +132,7 @@ We see that the model does predict fairly well the declension class of these nou
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/croatian/croatian.pdf}
-  \caption{Proportion of confusion between classes in Croatian.}\label{fig:croatian-results}
+  \caption{Proportion of confusion between classes in Croatian}\label{fig:croatian-results}
 \end{figure}
 
 \largerpage
@@ -148,10 +150,10 @@ This distribution is exactly what the model predicts, but it also makes sense fr
 Nouns in Russian\footnote{A previous version of the study in this section was presented in Olinco 2016 \autocite{GuzmanNaranjo.2016a}.} can form the diminutive with a wide range of different suffixes. Some examples of diminutive suffixes are shown in \REF{dims-russian}.\footnote{For clarity I will use the Latin transliterations in the examples, but the models were trained using their Cyrillic forms.}
 
 \begin{exe}
-    \ex \label{dims-russian} -jets (-ец), -ik (-ек),  -jok (-ёк), -ochik (-очек), -jechik (-ечек), -jochik (-ёчек), -itsa (-ица), -ichka (-ичка), -iko (-ико), -ko (-ко), -jetso (-ецо), -tso (-цо), -tse (-це),  \textbf{-ik} (-ик),  \textbf{-ok} (-ок),  \textbf{-chik} (-чик)
+    \ex \label{dims-russian} -jets (-ец), -ik (-ек),  -jok (-ёк), -ochik (-очек), -jechik (-ечек), -jochik (-ёчек), -itsa (-ица), -ichka (-ичка), -iko (-ико), -ko (-ко), -jetso (-ецо), -tso (-цо), -tse (-це),  \textit{-ik} (-ик),  \textit{-ok} (-ок),  \textit{-chik} (-чик)
 \end{exe}
 
-The choice of suffix is partly due to the gender of the noun \autocites{Kempe.2001, Kempe.2003}, as described in \REF{sys-dim}, but not completely. There are several possible diminutive forms for each gender, and the explanation why some nouns chose one or the other is not completely clear. As the whole system is too complex to be addressed here, I will focus on masculine nouns that build the diminutive with \textbf{-ik}, \textbf{-ok}, or \textbf{-chik} exclusively.
+The choice of suffix is partly due to the gender of the noun \autocites{Kempe.2001, Kempe.2003}, as described in \REF{sys-dim}, but not completely. There are several possible diminutive forms for each gender, and the explanation why some nouns chose one or the other is not completely clear. As the whole system is too complex to be addressed here, I will focus on masculine nouns that build the diminutive with \textit{-ik}, \textit{-ok}, or \textit{-chik} exclusively.
 
 \begin{exe}
     \ex \label{sys-dim}
@@ -207,7 +209,7 @@ The results in \tabref{tab:test-gkn-model} can be obtained by looking at the pre
     ok        & 122  & 56 & 75                \\
     \lspbottomrule
   \end{tabular}
-  \caption{Actual results for \textcite{Gouskova.2015}'s model.}\label{tab:test-gkn-model}
+  \caption{Actual results for \textcite{Gouskova.2015}'s model}\label{tab:test-gkn-model}
 \end{table}
 
 \begin{table}
@@ -222,7 +224,7 @@ The results in \tabref{tab:test-gkn-model} can be obtained by looking at the pre
     Kappa : 0.01\\
     \lspbottomrule
   \end{tabular}
-  \caption{Overall statistics for Confusion Matrix \tabref{tab:test-gkn-model}.}\label{tab:test-gkn-stats}
+  \caption{Overall statistics for Confusion Matrix \tabref{tab:test-gkn-model}}\label{tab:test-gkn-stats}
 \end{table}
 
 In one of the tests, the authors try to evaluate their model on a wug experiment with Russian speakers. They designed 300 nonce words and asked speakers to produce the corresponding diminutives. The authors claim high correlation between their model and speaker choices but it is not clear how this correlation was measured. First, their evaluation is made by using Kendall's and Spearman's correlation coefficients, which would lead to believe that they are testing predicted proportions vs produced, but this is not made clear. In the code the correlation calculations are made on categorical variables, which is not advisable and makes the results hard to interpret.
@@ -236,8 +238,9 @@ Conceptually, if one ignores semantics and stress assignment (which also seem to
 The hierarchy in \figref{fig:hierarchy-russ} shows an simple sketch of how the system can be captured. \figref{fig:hierarchy-russ} shows that all pairwise combinations are possible.\footnote{I am not aware of cases where all three suffixes are possible with one noun and could not elicit any from my informants.}
 
 \begin{figure}
-    \caption{Hybridization in Russian nouns.} \label{fig:hierarchy-russ}
-    \begin{forest} baseline, qtree edges, l sep+=2em, for children={
+    \caption{Hybridization in Russian nouns} \label{fig:hierarchy-russ}
+    \begin{forest} baseline, %qtree edges, 
+    l sep+=2em, for children={
           l sep+=2em,
         }
         [DIM
@@ -263,7 +266,7 @@ Since all combinations are possible, we expect confusion between all three types
 \begin{figure}
   \centering
   \includegraphics[scale=0.7]{./figures/russian/suffixes}
-  \caption{Type frequency of Russian suffix classes.}\label{fig:freqs-russ-dims}
+  \caption{Type frequency of Russian suffix classes}\label{fig:freqs-russ-dims}
 \end{figure}
 
 \subsection{The dataset}
@@ -289,7 +292,7 @@ To predict the diminutive forms, I fitted a model using the formula: \texttt{dim
      ok         & 13   & 30  & 15         & 232 \\
     \lspbottomrule
   \end{tabular}
-  \caption{Confusion Matrix for the model predicting Russian diminutives.}\label{tab:dim-russ}
+  \caption{Confusion Matrix for the model predicting Russian diminutives}\label{tab:dim-russ}
 \end{table}
 
 \begin{table}
@@ -305,13 +308,13 @@ To predict the diminutive forms, I fitted a model using the formula: \texttt{dim
     \multicolumn{5}{c}{Kappa : 0.6654}\\
     \lspbottomrule
   \end{tabular}
-  \caption{Overall statistics for Confusion Matrix \tabref{tab:dim-russ}.}\label{tab:dim-russ-stats}
+  \caption{Overall statistics for Confusion Matrix \tabref{tab:dim-russ}}\label{tab:dim-russ-stats}
 \end{table}
 
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./figures/russian/factimp-plot.pdf}
-    \caption{Additive (left) and sbustractive (right) accuracy and kappa scores for the model predicting Russian diminutives.}\label{fig:factimp-plot-russian}
+    \caption{Additive (left) and sbustractive (right) accuracy and kappa scores for the model predicting Russian diminutives}\label{fig:factimp-plot-russian}
 \end{figure}
 
 First of all, the model is very accurate overall and well above random chance. All four classes can be distinguished to a certain degree. The most important factor is the last segment, but the other factors all seem to have an important effect. More importantly, we find the exact predicted result in the error distribution. The class \textit{ik$\sim$ok} is less confused with the class \textit{chik} than with any of the other classes. Class \textit{chik} is rarely confused with classes \textit{ik} and \textit{ok}, while these two are confused with each other with relatively high frequency. This is clearly shown in \figref{fig:russian-results}.
@@ -319,7 +322,7 @@ First of all, the model is very accurate overall and well above random chance. A
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/russian/rus.pdf}
-  \caption{Proportion of confusion between classes in Russian.}\label{fig:russian-results}
+  \caption{Proportion of confusion between classes in Russian}\label{fig:russian-results}
 \end{figure}
 
 

@@ -25,7 +25,7 @@ In section \sectref{sec:mechanisms-analogy} I discussed four possible ways of im
 The similarities between these kinds of systems have been observed before:
 
 \begin{quotation}
-Connectionist  networks  themselves  further  illustrate  the  problem,  in  that  they might be seen to fall in both camps. Back-propagation networks are often described as  depending  on  similarity\dots  However,  they  are  also often described as using ‘implicit rules’ which can be extracted using appropriate analysis\dots Therefore, back-propagation networks appear rule- and similarity-based \autocite[p. 200]{Hahn.1998}
+Connectionist  networks  themselves  further  illustrate  the  problem,  in  that  they might be seen to fall in both camps. Back-propagation networks are often described as  depending  on  similarity\dots  However,  they  are  also often described as using ‘implicit rules’ which can be extracted using appropriate analysis\dots Therefore, back-propagation networks appear rule- and similarity-based \autocite[200]{Hahn.1998}
 \end{quotation}
 
 In any case, it should be clear that I am not arguing for neural networks as a necessarily better implementation of analogical systems, or as a psychologically plausible system. Neural networks as used here are just one of the many alternatives we have to model analogy.
@@ -34,13 +34,13 @@ All this being said, a more clever and carefully designed model similar to the w
 
 \section{Analogical models using neural networks}
 
-The easiest way to explain the intuition behind the models, and the tools I use for evaluating them, is with concrete examples. Suppose a language has two inflection classes, \textbf{A} and \textbf{B}. The dataset in \REF{exe-inflect-1} presents stems for lexemes belonging two said inflection classes.
+The easiest way to explain the intuition behind the models, and the tools I use for evaluating them, is with concrete examples. Suppose a language has two inflection classes, A and B. The dataset in \REF{exe-inflect-1} presents stems for lexemes belonging two said inflection classes.
 
 \begin{exe}
     \ex  \label{exe-inflect-1}
     \begin{xlist}
-        \ex A: \textit{lama}, \textit{lara}, \textit{lado}, \textit{laso}, \textit{pama}, \textit{ra}, \textit{dal}, \textit{kar}, \textit{tsar}, \textit{sek}, \textit{cess}
-        \ex B: \textit{egrr}, \textit{liz}, \textit{lo}, \textit{loi}, \textit{lu}, \textit{lip}, \textit{roop}, \textit{oppe}, \textit{toi}, \textit{olor}, \textit{gin}, \textit{grip}, \textit{wik}
+        \ex A: lama, lara, lado, laso, pama, ra, dal, kar, tsar, sek, cess
+        \ex B: egrr, liz, lo, loi, lu, lip, roop, oppe, toi, olor, gin, grip, wik
     \end{xlist}
 \end{exe}
 
@@ -50,11 +50,11 @@ Put in simple terms, given a training dataset with items, and a series of predic
 
 We can apply this to our previous example. We split the data set into a training and a small testing dataset. For the testing dataset we randomly select the items: \textit{lama}, \textit{lara}, \textit{kar}, \textit{egrr}, \textit{liz}, \textit{oppe}, \textit{grip}, and we assign the rest of the items to the training dataset. For illustration, we can fit two different models. In Model 1, we set two predictors \texttt{s1} and \texttt{s2}, which correspond to the first and second letter in the items, respectively. For Model 2 we set \texttt{v1} and \texttt{c1}, which correspond to the first vowel and first consonant of the items, respectively. We can then train Model 1 and Model 2.
 
-\figref{fig:model1} shows the structure of the neural network for Model 1. As can be seen, there is a direct connection between the predictors and the outcomes (a skip layer), and there are no intermediate steps (hidden layers). We can see how each letter predicts A or B. The thickness of the line represents the absolute value of the weight (thicker lines have larger absolute values), and the color represents whether the weight is positive (dark gray) and favors the outcome, or negative (light gray) and disfavours the outcome. In the node marked as \texttt{B1} we have the baseline (the bias node) made up of the combination of the levels \textit{c} for \texttt{s1} and \textit{a} for \texttt{s2}\footnote{The models chooses the baseline levels purely on alphabetical order.}. This combination clearly favours \textbf{A}, as we would expect. If any of these levels changes in the input, then the nodes in the skip layer activate and counteract the baseline. If, say, the input contains an \textit{u}, \textit{i} or \textit{o} instead of an \textit{a} in \texttt{s2}, then the corresponding node will strongly activate the outcome \textbf{B}, as we, again, would expect from the data set. The complete set of weights from the inputs to the outcomes for Model 1 is given in \tabref{tab:model1-weights}.
+\figref{fig:model1} shows the structure of the neural network for Model 1. As can be seen, there is a direct connection between the predictors and the outcomes (a skip layer), and there are no intermediate steps (hidden layers). We can see how each letter predicts A or B. The thickness of the line represents the absolute value of the weight (thicker lines have larger absolute values), and the color represents whether the weight is positive (dark gray) and favors the outcome, or negative (light gray) and disfavours the outcome. In the node marked as \texttt{B1} we have the baseline (the bias node) made up of the combination of the levels \textit{c} for \texttt{s1} and \textit{a} for \texttt{s2}\footnote{The models chooses the baseline levels purely on alphabetical order.}. This combination clearly favours A, as we would expect. If any of these levels changes in the input, then the nodes in the skip layer activate and counteract the baseline. If, say, the input contains an \textit{u}, \textit{i} or \textit{o} instead of an \textit{a} in \texttt{s2}, then the corresponding node will strongly activate the outcome B, as we, again, would expect from the data set. The complete set of weights from the inputs to the outcomes for Model 1 is given in \tabref{tab:model1-weights}.
 
 \begin{sidewaysfigure}[!htpb]
   \includegraphics[scale=0.45]{./figures/fake/model1.pdf}
-  \caption{Representation of Model 1.}\label{fig:model1}
+  \caption{Representation of Model 1}\label{fig:model1}
 \end{sidewaysfigure}
 
 \begin{table}[!htpb]
@@ -108,7 +108,7 @@ We can apply this to our previous example. We split the data set into a training
     41 & -3.81  & s         & B        & s2       \\
     42 & 17.85  & u         & B        & s2       \\
     \lspbottomrule
-  \end{tabular}\caption{Weight table for Model 1.}\label{tab:model1-weights}
+  \end{tabular}\caption{Weight table for Model 1}\label{tab:model1-weights}
 \end{table}
 
 To calculate the actual class probabilities from the output weights, we use the softmax function. The intuition of this function is that, given a vector of weights, it will transform that vector into a vector of probabilities, where the element with the highest weight will receive the highest probability, and all probabilities add up to 1. The general form of this function is given in equation \eqref{eq:softmax}. In prose, we exponentiate each weight, and divide by the sum of all exponentiated weights.  
@@ -140,7 +140,7 @@ To know how well the model performs, we predict the outcomes of the testing data
     7 & A & B & grip \\
     \lspbottomrule
   \end{tabular}
-  \caption{Predictions Model 1.}\label{tab:preds-model1}
+  \caption{Predictions Model 1}\label{tab:preds-model1}
 \end{table}
 
 \begin{table}[!htpb]
@@ -154,7 +154,7 @@ To know how well the model performs, we predict the outcomes of the testing data
     B          & 0  & 2                        \\
     \lspbottomrule
   \end{tabular}
-    \caption{Confusion matrix for Model 1.}\label{tab:model1-conf}
+    \caption{Confusion matrix for Model 1}\label{tab:model1-conf}
 \end{table}
 
 \begin{table}[!htpb]
@@ -168,14 +168,14 @@ To know how well the model performs, we predict the outcomes of the testing data
     B          & FN & TN                       \\
     \lspbottomrule
   \end{tabular}
-  \caption{Diagram of True Positives, False Positives, True Negatives and False Negatives.}\label{tab:tpfp-conf}
+  \caption{Diagram of True Positives, False Positives, True Negatives and False Negatives}\label{tab:tpfp-conf}
 \end{table}
 
-The accuracy is the number of correct predictions divided by the total number of items. Additionally, we can calculate the confidence interval (CI) of the accuracy by using a binomial test \autocite{Clopper.1934, Newcombe.1998}. The No Information Rate (or accuracy of a model under a no information situation) is calculated as the largest class percentage in the data. In this case, \textbf{A}'s class percentage is 0.4286 and \textbf{B}'s is 0.5714, thus the latter is taken to be the No Information Rate. In other words, the No Information Rate is the accuracy of a model that always predicts the most frequent outcome. In our example data \textbf{B} is the most frequent outcome. If the model predicted all outcomes to be \textbf{B}, then it would reach an accuracy of $4/7=0.5714$. Models where all predictors have no information regarding the outcomes (i.e. they are poor predictors) tend to have an accuracy close to the No Information Rate, because always predicting the most frequent outcome guarantees the highest possible accuracy under a no information situation. The model is then said to perform above chance if the No Information Rate is less than the lower limit of the accuracy confidence interval.
+The accuracy is the number of correct predictions divided by the total number of items. Additionally, we can calculate the confidence interval (CI) of the accuracy by using a binomial test \autocite{Clopper.1934, Newcombe.1998}. The No Information Rate (or accuracy of a model under a no information situation) is calculated as the largest class percentage in the data. In this case, A's class percentage is 0.4286 and B's is 0.5714, thus the latter is taken to be the No Information Rate. In other words, the No Information Rate is the accuracy of a model that always predicts the most frequent outcome. In our example data B is the most frequent outcome. If the model predicted all outcomes to be B, then it would reach an accuracy of $4/7=0.5714$. Models where all predictors have no information regarding the outcomes (i.e. they are poor predictors) tend to have an accuracy close to the No Information Rate, because always predicting the most frequent outcome guarantees the highest possible accuracy under a no information situation. The model is then said to perform above chance if the No Information Rate is less than the lower limit of the accuracy confidence interval.
 
 There are three additional statistical values I will use in certain cases are: \textit{Specificity}, \textit{Sensitivity} and \textit{Negative Predictive Value}. Specificity is the proportion of negatives that are identified as such ($=\textrm{TN}/(\textrm{TN}+\textrm{FP})$), while sensitivity is the proportion of positives that are identified as such ($=\textrm{TP}/(\textrm{TP}+\textrm{FN})$). The negative predictive value ($=\textrm{TN}/(\textrm{TN}+\textrm{FN})$) will help us identify the class to which more items from other class are misclassified. These three statistics are not relevant for this particular example because we only have two classes here, but can be used, by class, in models with more than two outcomes.
 
-Finally, the kappa statistic compares the observed accuracy with the expected accuracy (under random chance). The expected accuracy is calculated as follows. We multiply the observed frequency of \textbf{A} by the predicted frequency of \textbf{A}, and the observed frequency of \textbf{B} by the predicted frequency of \textbf{B}. We then divide these numbers by N, add them together and divide again by N. Thus, we get:
+Finally, the kappa statistic compares the observed accuracy with the expected accuracy (under random chance). The expected accuracy is calculated as follows. We multiply the observed frequency of A by the predicted frequency of A, and the observed frequency of B by the predicted frequency of B. We then divide these numbers by N, add them together and divide again by N. Thus, we get:
 
 \is{True Positive}
 \is{True Negative}
@@ -213,14 +213,14 @@ Kappa scores\footnote{In our case: $\textrm{Expected.Accuracy}=\frac{\frac{3*(3+
     Kappa               & 0.3593            \\
     \lspbottomrule
   \end{tabular}
-  \caption{Overall statistics for Model 1.}\label{tab:stats-model1}
+  \caption{Overall statistics for Model 1}\label{tab:stats-model1}
 \end{table}
 
 A second possible model for our dataset is to specify more linguistic information in the predictors. In Model 1 all we have is information about position of the segments, but not information about their nature. An alternative would be to set a model where the predictors are not selected by position only, but also by class. Instead of using the first and second letters in the pseudo words, we will now use the first consonant (\texttt{c1}) and the first vowel (\texttt{v1}). \figref{fig:model2} shows the structure of Model 2 as before. By selecting more structural predictors we have somewhat reduced the complexity of the model\footnote{Notice this is only the case because of the characteristics of this dataset. In more complex datasets a more structured model will usually be more complex than a less structured one because it requires more information.}, but the same generalization remains: the main predictor is the first vowel of the word. The full set of weights for the model is given in \tabref{tab:model2-weights}.
 
 \begin{sidewaysfigure}[!htpb]
-  \includegraphics[scale=0.5]{./figures/fake/model2.pdf}
-  \caption{Representation of Model 2.}\label{fig:model2}
+  \includegraphics[scale=0.45]{./figures/fake/model2.pdf}
+  \caption{Representation of Model 2}\label{fig:model2}
 \end{sidewaysfigure}
 
 \begin{table}[!htpb]
@@ -258,10 +258,10 @@ A second possible model for our dataset is to specify more linguistic informatio
     27 & 2.48   & t         & B        & c1       \\
     28 & 9.22   & w         & B        & c1       \\
     \lspbottomrule
-  \end{tabular}\caption{Weight table for Model 2.}\label{tab:model2-weights}
+  \end{tabular}\caption{Weight table for Model 2}\label{tab:model2-weights}
 \end{table}
 
-In \tabref{tab:preds-model2} we see now the results of the predictions. This time the model only made one mistake: \textit{egrr}. The reason why \textit{grip} is correctly classified this time is that the model finds it similar enough to \textit{liz}, \textit{lip} and \textit{gin}, because it now knows what its vowel is. Trying to reconstruct the evaluation of \textit{egrr} is instructive. For obtaining the weight for \textbf{A} we add to the baseline (7.43) the weight for \texttt{c1}=\textit{g} (-6.66) and \texttt{v1}=\textit{e} (11.87), which gives us 12.64, and we do the same for \textbf{B} (-8.19-12.23+7.28) and we get -13.14. This clearly makes \textbf{A} win, but the node for \texttt{c1} was pulling, in both cases, for \textbf{B}. This means that even though the model made the wrong choice, it did see a similarity between \textit{egrr} and other \textbf{B} items (namely having \textit{g} as its first consonant). This can be seen in the probabilities in \tabref{tab:preds-model2}. Of those items classified as \textbf{A}, \textit{eggr} had the highest (even if small) probability of belonging to class \textbf{B}. I will use this aspect of the analogical models in the next chapters to measure similarity between classes.
+In \tabref{tab:preds-model2} we see now the results of the predictions. This time the model only made one mistake: \textit{egrr}. The reason why \textit{grip} is correctly classified this time is that the model finds it similar enough to \textit{liz}, \textit{lip} and \textit{gin}, because it now knows what its vowel is. Trying to reconstruct the evaluation of \textit{egrr} is instructive. For obtaining the weight for A we add to the baseline (7.43) the weight for \texttt{c1}=\textit{g} (-6.66) and \texttt{v1}=\textit{e} (11.87), which gives us 12.64, and we do the same for B (-8.19-12.23+7.28) and we get -13.14. This clearly makes A win, but the node for \texttt{c1} was pulling, in both cases, for B. This means that even though the model made the wrong choice, it did see a similarity between \textit{egrr} and other B items (namely having \textit{g} as its first consonant). This can be seen in the probabilities in \tabref{tab:preds-model2}. Of those items classified as A, \textit{eggr} had the highest (even if small) probability of belonging to class B. I will use this aspect of the analogical models in the next chapters to measure similarity between classes.
 
 \begin{table}[!htpb]
   \centering
@@ -278,7 +278,7 @@ In \tabref{tab:preds-model2} we see now the results of the predictions. This tim
     7 & B         & 5.55e-09      & 1.00e+00      & B        & grip \\
     \lspbottomrule
   \end{tabular}
-  \caption{Predictions Model 2, including the probabilities for class \textbf{A} and \textbf{B}.}\label{tab:preds-model2}
+  \caption{Predictions Model 2, including the probabilities for class A and B}\label{tab:preds-model2}
 \end{table}
 
 The corresponding confusion matrix and statistics for Model 2 are given in \tabref{tab:model2-conf} and \tabref{tab:stats-model2}, respectively.
@@ -294,7 +294,7 @@ The corresponding confusion matrix and statistics for Model 2 are given in \tabr
     B          & 0  & 3                        \\
     \lspbottomrule
   \end{tabular}
-  \caption{Confusion matrix for Model 2.}\label{tab:model2-conf}
+  \caption{Confusion matrix for Model 2}\label{tab:model2-conf}
 \end{table}
 
 \begin{table}[!htpb]
@@ -310,7 +310,7 @@ The corresponding confusion matrix and statistics for Model 2 are given in \tabr
     Kappa               & 0.72              \\
     \lspbottomrule
   \end{tabular}
-  \caption{Overall statistics for Model 2.}\label{tab:stats-model2}
+  \caption{Overall statistics for Model 2}\label{tab:stats-model2}
 \end{table}
 
 \newpage 
@@ -334,17 +334,17 @@ The second important method I will use throughout this book is that of clusterin
 \begin{exe}
     \ex \label{inf-class-2}
     \begin{xlist}
-        \ex A: \textit{lama}, \textit{lara}, \textit{lado}, \textit{laso}, \textit{tama}, \textit{ga}, \textit{gal}, \textit{tar}, \textit{tsar}, \textit{tek}, \textit{tess}
-        \ex B: \textit{egrr}, \textit{liz}, \textit{lo}, \textit{loi}, \textit{le}, \textit{lep}, \textit{loop}, \textit{olpe}, \textit{toi}, \textit{olor}, \textit{gen}, \textit{grap}, \textit{tak}
-        \ex C: \textit{yrro}, \textit{yrto}, \textit{yro}, \textit{undo}, \textit{ujo}, \textit{jyr}, \textit{juk}, \textit{juz}, \textit{ryk}
+        \ex A: lama, lara, lado, laso, tama, ga, gal, tar, tsar, tek, tess
+        \ex B: egrr, liz, lo, loi, le, lep, loop, olpe, toi, olor, gen, grap, tak
+        \ex C: yrro, yrto, yro, undo, ujo, jyr, juk, juz, ryk
     \end{xlist}
 \end{exe}
 
-In this new example we have three classes (\textbf{A}, \textbf{B} and \textbf{C}) which are easily described in terms of their first vowels and consonants. Words in \textbf{A} have an \textit{a}, or an \textit{e} preceded by a \textit{t}, \textit{s} or \textit{g}. Words in \textbf{B} have an \textit{o}, \textit{i}, \textit{a}, or an \textit{e} not preceded by a \textit{t} (except for \textit{tak}). Words in \textbf{C} have a \textit{y} or \textit{u}, usually with an \textit{r} or \textit{j}. Additionally, we can observe that there is a much greater similarity between \textbf{A} and \textbf{B}, than \textbf{C} to the other two. \textbf{A} and \textbf{B} can appear with an \textit{l} or \textit{e}, and to a lesser degree \textit{t} or \textit{g}, while \textbf{C} does not.
+In this new example we have three classes (A, B and C) which are easily described in terms of their first vowels and consonants. Words in A have an \textit{a}, or an \textit{e} preceded by a \textit{t}, \textit{s} or \textit{g}. Words in B have an \textit{o}, \textit{i}, \textit{a}, or an \textit{e} not preceded by a \textit{t} (except for \textit{tak}). Words in C have a \textit{y} or \textit{u}, usually with an \textit{r} or \textit{j}. Additionally, we can observe that there is a much greater similarity between A and B, than C to the other two. Classes A and B can appear with an \textit{l} or \textit{e}, and to a lesser degree \textit{t} or \textit{g}, while C does not.
 
 We can fit a new model using again the predictors \texttt{c1} and \texttt{v1} to this new dataset (Model 3), and because the system is much more regular now, it should predict perfectly the class of an item. What we really want to achieve now is measuring the similarity between the three classes based on the analogical model. This can be done in different ways. In a model with few classes and lots of errors between the classes, we could look at the degree of confusion between any two classes and set classes with more confusion as more similar. In models with many classes this is less practical because class size is Zipf distributed \autocite{Blevins.2016}, which means that many classes will have very few members. In highly accurate models with very few errors, the measured similarity for small classes will be much less reliable. An alternative I will use in this situation is to directly use the probabilities predicted by the model.
 
-The probabilities for Model 3 can be seen in \tabref{tab:probabilities-model3}\footnote{For the purposes of this example I am not splitting the dataset into training and testing sets. For the actual case studies the probabilities used come from the same cross-validation process.}. In this table, each line shows the probabilities a stem has of belonging to either of the three classes. So, for \textit{lama}, the probabilities are 0.8496 for class \textbf{A}, 0.1503 for class \textbf{B}, and 6.225e-09 for class \textbf{C}. From these probabilities we can build a (negative) correlation distance matrix\footnote{When using errors instead of probabilities the process is the same, but we take the negative correlation measures for the confusion matrix instead.} and from this, a distance matrix as shown in \tabref{tab:corr-dist-model3}.
+The probabilities for Model 3 can be seen in \tabref{tab:probabilities-model3}\footnote{For the purposes of this example I am not splitting the dataset into training and testing sets. For the actual case studies the probabilities used come from the same cross-validation process.}. In this table, each line shows the probabilities a stem has of belonging to either of the three classes. So, for \textit{lama}, the probabilities are 0.8496 for class A, 0.1503 for class B, and 6.225e-09 for class C. From these probabilities we can build a (negative) correlation distance matrix\footnote{When using errors instead of probabilities the process is the same, but we take the negative correlation measures for the confusion matrix instead.} and from this, a distance matrix as shown in \tabref{tab:corr-dist-model3}.
 
 \begin{table}[!htpb]
   \centering
@@ -387,7 +387,7 @@ The probabilities for Model 3 can be seen in \tabref{tab:probabilities-model3}\f
     33 & 6.060e-11     & 7.044e-14     & 1.000e+00     & ryk  \\
     \bottomrule
   \end{tabular}
-  \caption{Predicted probabilities for Model 3.}\label{tab:probabilities-model3}
+  \caption{Predicted probabilities for Model 3}\label{tab:probabilities-model3}
 \end{table}
 
 \begin{table}[!htpb]
@@ -409,30 +409,30 @@ The probabilities for Model 3 can be seen in \tabref{tab:probabilities-model3}\f
     C & 0.533  & 0.598                     \\
     \bottomrule
   \end{tabular}
-  \caption{Correlation distances for Model 3.}\label{tab:corr-dist-model3}
+  \caption{Correlation distances for Model 3}\label{tab:corr-dist-model3}
 \end{table}
 
-From the distance matrix we can see that \textbf{A} is closest (has the smaller distance) to \textbf{B}, and that the greater distance is between \textbf{B} and \textbf{C}. Using the distance matrix we can then build a dendrogram using hierarchical clustering\footnote{For the clustering I use the Ward's linkage method. Although Ward's method \autocite{Murtagh.2014} is designed to be applied to Euclidean distances, some recent studies have shown it performs formidably with other distance metrics \autocites{Meyniel.2010, Strauss.2017}.} \autocite{Rokach.2005} as in \figref{fig:dendro-model3}. Similarly, we can compress the information given in the correlation matrix from three to two dimensions using multidimensional scaling (MDS) \autocite{Borg.2005, Cysouw.2007c}. Informally, MDS is a way of visualizing highly dimensional data in a two-dimensional plot. It tries to preserve as much of the original distance between two objects as possible. There is an inherent data loss when using MDS, which means the plots are an approximation, and there is dimensional data in the original distance matrix being lost. Using this two-dimensional representation of the data we can plot the categories on a two-dimensional plane as in \figref{fig:mds-model3}.
+From the distance matrix we can see that A is closest (has the smaller distance) to B, and that the greater distance is between B and C. Using the distance matrix we can then build a dendrogram using hierarchical clustering\footnote{For the clustering I use the Ward's linkage method. Although Ward's method \autocite{Murtagh.2014} is designed to be applied to Euclidean distances, some recent studies have shown it performs formidably with other distance metrics \autocites{Meyniel.2010, Strauss.2017}.} \autocite{Rokach.2005} as in \figref{fig:dendro-model3}. Similarly, we can compress the information given in the correlation matrix from three to two dimensions using multidimensional scaling (MDS) \autocite{Borg.2005, Cysouw.2007c}. Informally, MDS is a way of visualizing highly dimensional data in a two-dimensional plot. It tries to preserve as much of the original distance between two objects as possible. There is an inherent data loss when using MDS, which means the plots are an approximation, and there is dimensional data in the original distance matrix being lost. Using this two-dimensional representation of the data we can plot the categories on a two-dimensional plane as in \figref{fig:mds-model3}.
 
 \begin{figure}[!htpb]
   \centering
   \includegraphics{./figures/fake/dendro3.pdf}
-  \caption{Dendrogram based on correlation distances for Model 3.}\label{fig:dendro-model3}
+  \caption{Dendrogram based on correlation distances for Model 3}\label{fig:dendro-model3}
 \end{figure}
 
 \begin{figure}[!htpb]
   \centering
   \includegraphics{./figures/fake/mds3.pdf}
-  \caption{MDS based on correlation distances for Model 3.}\label{fig:mds-model3}
+  \caption{MDS based on correlation distances for Model 3}\label{fig:mds-model3}
 \end{figure}
 
-In this case, both representations agree with the observation from before: \textbf{A} and \textbf{B} are closer to each other than to \textbf{C}. Additionally, \figref{fig:dendro-model3} shows that \textbf{A} is somewhat closer to \textbf{C} than \textbf{B} is. For simple cases with only three groups I will only make use of dendrograms, but for cases with many classes I will also use MDS.
+In this case, both representations agree with the observation from before: A and B are closer to each other than to C. Additionally, \figref{fig:dendro-model3} shows that A is somewhat closer to C than B is. For simple cases with only three groups I will only make use of dendrograms, but for cases with many classes I will also use MDS.
 
 \section{Summing up}
 
 I have shown in this chapter that building analogical models with neural networks is not conceptually different from finding analogical relations by hand. The statistical models are, to a great extent, a notational variant of informal descriptions or schemas. They have the advantage that they require less manual work and can be easily applied to very large datasets. The clustering analysis with dendrograms and the MDS analysis for finding similar classes does not produce substantially different results from what a linguist would arrive at by inspecting the items manually. As stated before, there is no claim about the cognitive reality or psycholinguistic plausibility of the neural networks themselves. Neural networks are simply tools. The claim is that the analogical relations are present in the data, and speakers can thus make use of these relations.
 
-In the next chapters I will use these tools to explore different analogical systems in various languages. Part II contains four chapters besides this one, each corresponding to a general topic and containing at least two case studies. Chapter \sectref{chap:gender-assignment} deals with some general gender issues in Latin and Romanian. This chapter introduces the basic claim, and shows how analogical relations that predict gender in nouns have a correlate with the hierarchy. Chapter \sectref{chap:hybrid} shows what happens in systems where simple trees are not enough and we need hybrid types in the hierarchy. This chapter deals with the topic of overabundance and affix competition in Russian and Croatian. Chapter \sectref{chap:structural} explores the claim that we need structural information in the analogical models. I present examples from prefixing languages (Swahili and Otomí de la Sierra), where the analogical process takes place on the first segments of the items, and Hausa, were the analogical specification requires more structure than for other languages. Chapter \sectref{chap:complex} presents three cases of complex inflectional systems: Spanish verb classes and Kasem number classes. This chapter provides the strongest evidence for the interaction between type hierarchies and analogical processes. Finally, Chapter \sectref{chap:conclusion} sums up the results and their implications for both usage-based and formal linguistics.
+In the next chapters I will use these tools to explore different analogical systems in various languages. Part II contains four chapters besides this one, each corresponding to a general topic and containing at least two case studies. Chapter \ref{chap:gender-assignment} deals with some general gender issues in Latin and Romanian. This chapter introduces the basic claim, and shows how analogical relations that predict gender in nouns have a correlate with the hierarchy. Chapter \ref{chap:hybrid} shows what happens in systems where simple trees are not enough and we need hybrid types in the hierarchy. This chapter deals with the topic of overabundance and affix competition in Russian and Croatian. Chapter \ref{chap:structural} explores the claim that we need structural information in the analogical models. I present examples from prefixing languages (Swahili and Otomí de la Sierra), where the analogical process takes place on the first segments of the items, and Hausa, were the analogical specification requires more structure than for other languages. Chapter \ref{chap:complex} presents three cases of complex inflectional systems: Spanish verb classes and Kasem number classes. This chapter provides the strongest evidence for the interaction between type hierarchies and analogical processes. Finally, Chapter \ref{chap:conclusion} sums up the results and their implications for both usage-based and formal linguistics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

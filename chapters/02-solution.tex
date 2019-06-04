@@ -52,7 +52,7 @@ By assumption, theories like \textsc{hpsg} take inheritance to be monotonic, and
 The example in \figref{fig:exe-hierar-verbs-1} shows schematically the idea behind multiple inheritance.
 
 \begin{figure}
-    \caption{Example of multiple inheritance.} \label{fig:exe-hierar-verbs-1}
+    \caption{Example of multiple inheritance} \label{fig:exe-hierar-verbs-1}
     \begin{forest} baseline
         [\textit{word}, for tree={parent anchor=south, child anchor=north}
         [\textit{pos} [\textit{noun}] [\textit{adjective}] [\textit{verb}
@@ -114,14 +114,14 @@ A couple of observations are necessary regarding multiple inheritance. As in thi
     \end{avm}
 \end{exe}
 
-In Chapter \sectref{chap:hybrid}, I will discuss cases in which regular multiple inheritance does not work in this way.
+In Chapter \ref{chap:hybrid}, I will discuss cases in which regular multiple inheritance does not work in this way.
 An alternative is to use empty types. Empty types are types which impose no constraints on their members, and from which nothing is inherited\footnote{Notice empty types are only empty with regards to the morphological process, but they can, and in fact do specify phonological and semantic constraints on their members as described in the next sections.}.
 The idea behind empty types is that groups of lexical items share the common property of undergoing some morphological process or taking some particular marker, but we want to formally separate the groups themselves from the actual morphological process.
 Using empty types can help us capture several inflection class phenomena, including cases of multiple inheritance.
 We can expand the hierarchy in \figref{fig:exe-hierar-verbs-1} to include inflection class.\footnote{In \figref{fig:exe-hierar-verbs-2}, the type \textit{infl-class} is a sub-type \textit{word}, which is done so only for convenience. A more detailed type hierarchy would probably specify inflection class elsewhere.}
 
 \begin{figure}
-    \scalebox{0.9}{\caption{Example hierarchy for English verb inflection.} \label{fig:exe-hierar-verbs-2}
+    \scalebox{0.9}{\caption{Example hierarchy for English verb inflection} \label{fig:exe-hierar-verbs-2}
     \begin{forest} baseline
         [\textit{word}, for tree={parent anchor=south, child anchor=north}
         [\textit{pos} [\textit{noun}] [\textit{adjective}] [\textit{verb}
@@ -176,7 +176,7 @@ I will call this hypothesis \textbf{Analogy as a type constraint} (\textsc{atc})
 I propose that analogical classifiers do not operate on a multiple category basis. Instead, classifiers operate on a type by type basis. For each type, its classifier says what the phonology and semantics of the items that belong to that type must be like. This means that classifiers are not multinomial, but binomial. This is a new view of analogy. Usually, analogical classifiers are understood as systems which assign a category to an item based on their phonology and semantics. This is the effect we see. But, if we want to properly integrate analogy into the grammar, we need to decompose its classifiers into multiple binary classifiers\footnote{This is not too different from what multinomial regression models do. From a computational perspective, whether one trains the models as individual binary classifiers or as one big multinomial classifier makes no real difference. However, because directly training multinomial models is much simpler, I will take this route when implementing the analogical models.}. A toy example with the irregular English verb classes already mentioned can help illustrate this crucial point. The example in \figref{fig:exe-classifier-multinomial} shows how a multinomial classifier works: The classifier takes a word, and for the word it decides what class it belongs to.
 
 \begin{figure}
-    \caption{Example of multinomial classifier.}\label{fig:exe-classifier-multinomial}
+    \caption{Example of multinomial classifier}\label{fig:exe-classifier-multinomial}
     \begin{tikzpicture}[baseline=(current bounding box.north)]
         \node (verb) at (1,0){\textit {verb}};
         \node (cl) at (4,0){\textsc {classifier}};
@@ -193,7 +193,7 @@ I propose that analogical classifiers do not operate on a multiple category basi
 In contrast, the example in \figref{fig:exe-classifier-binomial} shows how a binomial classifier works: For each of the three classes: \textit{class--a}, \textit{class--b} and \textit{class--c}, an analogical classifier decides whether a given verb belongs to said class or not.
 
 \begin{figure}
-    \caption{Example of binomial classifier.} \label{fig:exe-classifier-binomial}
+    \caption{Example of binomial classifier} \label{fig:exe-classifier-binomial}
     \begin{tikzpicture}[baseline=(current bounding box.north)]
         \node (va) at (0,1.5){\textit {verb}};
         \node (vb) at (0,0){\textit {verb}};
@@ -240,7 +240,7 @@ Although previous work on analogical classifiers seems to make this assumption i
 This account has one direct consequence. If we accept that analogical models help to predict types in the hierarchy, there is no reason to think that analogical models can only predict the most specific types. Suppose an analogical model could discriminate between the four leaves (\textit{X}, \textit{Y}, \textit{Z}, \textit{W}) in \figref{fig:fake-exe-hierar}.
 
 \begin{figure}
-    \caption{Basic hierarchy example.} \label{fig:fake-exe-hierar} \begin{forest}baseline
+    \caption{Basic hierarchy example}\label{fig:fake-exe-hierar} \begin{forest}baseline
         [\textit{class} [$\tau$ [\textit{X}] [\textit{Y}]] [$\sigma$ [\textit{Z}] [\textit{W}]]]
     \end{forest}
 \end{figure}
@@ -263,32 +263,32 @@ To give an example from Sanskrit. The nominal inflection in Sanskrit has five cl
 
 \begin{table}
     \centering
-    \caption{Sanskrit inflection classes according to \textcite{Whitney.1986}.} \label{tab:aistems-sanskrit}
+    \caption{Sanskrit inflection classes according to \textcite{Whitney.1986}} \label{tab:aistems-sanskrit}
     \begin{tabular}{llll}
       \lsptoprule
       \multicolumn{4}{c}{\textit{a}-stem, \textit{kāma-} `desire'}                                          \\
       \midrule
       & Singular                 & Dual                         & Plural                       \\
-      Nominative   & kām-\textbf{as}          & kām\textbf{a}-\textbf{u}     & kām\textbf{ā}-\textbf{s}     \\
-      Accusative   & kām-\textbf{am}          & kām\textbf{a}-\textbf{u}     & kām\textbf{ā}-\textbf{n}     \\
-      Instrumental & kām-\textbf{ena}         & kām\textbf{ā}-\textbf{bhyām} & kām\textbf{a}-\textbf{is}    \\
-      Dative       & kām-\textbf{āya}         & kām\textbf{ā}-\textbf{bhyām} & kām\textbf{e}-\textbf{bhyas} \\
-      Ablative     & kām-\textbf{āt}          & kām\textbf{ā}-\textbf{bhyām} & kām\textbf{e}-\textbf{bhyas} \\
-      Genitive     & kām-\textbf{asya}        & kām\textbf{a}-\textbf{yos}   & kām\textbf{ā}-\textbf{nām}   \\
-      Locative     & kām-\textbf{e}           & kām\textbf{a}-\textbf{yos}   & kām\textbf{e}-\textbf{ṣu}    \\
-      Vocative     & kām-\textbf{a}           & kām\textbf{a}-\textbf{u}     & kām\textbf{ā}-\textbf{s}     \\
+      Nominative   & kām-\textit{as}          & kām\textit{a}-\textit{u}     & kām\textit{ā}-\textit{s}     \\
+      Accusative   & kām-\textit{am}          & kām\textit{a}-\textit{u}     & kām\textit{ā}-\textit{n}     \\
+      Instrumental & kām-\textit{ena}         & kām\textit{ā}-\textit{bhyām} & kām\textit{a}-\textit{is}    \\
+      Dative       & kām-\textit{āya}         & kām\textit{ā}-\textit{bhyām} & kām\textit{e}-\textit{bhyas} \\
+      Ablative     & kām-\textit{āt}          & kām\textit{ā}-\textit{bhyām} & kām\textit{e}-\textit{bhyas} \\
+      Genitive     & kām-\textit{asya}        & kām\textit{a}-\textit{yos}   & kām\textit{ā}-\textit{nām}   \\
+      Locative     & kām-\textit{e}           & kām\textit{a}-\textit{yos}   & kām\textit{e}-\textit{ṣu}    \\
+      Vocative     & kām-\textit{a}           & kām\textit{a}-\textit{u}     & kām\textit{ā}-\textit{s}     \\
       \midrule
       \multicolumn{4}{c}{\textit{C}-stem, \textit{vak-} `voice'}                                            \\
       \midrule
       & Singular                 & Dual     & Plural   \\
-      Nominative   & vā\textbf{k}-$\emptyset$ & vā\textbf{c}-\textbf{āu}    & vā\textbf{c}-\textbf{as}    \\
-      Accusative   & vā\textbf{c}-\textbf{am}          & vā\textbf{c}-\textbf{āu}    & vā\textbf{c}-\textbf{as}    \\
-      Instrumental & vā\textbf{c}-\textbf{ā }          & vā\textbf{g}-\textbf{bhyām} & vā\textbf{g}-\textbf{bhis}  \\
-      Dative       & vā\textbf{c}-\textbf{e }          & vā\textbf{g}-\textbf{bhyām} & vā\textbf{g}-\textbf{bhyas} \\
-      Ablative     & vā\textbf{c}-\textbf{as}          & vā\textbf{g}-\textbf{bhyām} & vā\textbf{g}-\textbf{bhyas} \\
-      Genitive     & vā\textbf{c}-\textbf{as}          & vā\textbf{c}-\textbf{os}    & vā\textbf{c}-\textbf{ām}    \\
-      Locative     & vā\textbf{c}-\textbf{i }          & vā\textbf{c}-\textbf{os}    & vā\textbf{k}-\textbf{ṣu}    \\
-      Vocative     & vā\textbf{k}-$\emptyset$ & vā\textbf{c}-\textbf{āu}    & vā\textbf{c}-\textbf{as}    \\
+      Nominative   & vā\textit{k}-$\emptyset$ & vā\textit{c}-\textit{āu}    & vā\textit{c}-\textit{as}    \\
+      Accusative   & vā\textit{c}-\textit{am}          & vā\textit{c}-\textit{āu}    & vā\textit{c}-\textit{as}    \\
+      Instrumental & vā\textit{c}-\textit{ā }          & vā\textit{g}-\textit{bhyām} & vā\textit{g}-\textit{bhis}  \\
+      Dative       & vā\textit{c}-\textit{e }          & vā\textit{g}-\textit{bhyām} & vā\textit{g}-\textit{bhyas} \\
+      Ablative     & vā\textit{c}-\textit{as}          & vā\textit{g}-\textit{bhyām} & vā\textit{g}-\textit{bhyas} \\
+      Genitive     & vā\textit{c}-\textit{as}          & vā\textit{c}-\textit{os}    & vā\textit{c}-\textit{ām}    \\
+      Locative     & vā\textit{c}-\textit{i }          & vā\textit{c}-\textit{os}    & vā\textit{k}-\textit{ṣu}    \\
+      Vocative     & vā\textit{k}-$\emptyset$ & vā\textit{c}-\textit{āu}    & vā\textit{c}-\textit{as}    \\
       \lspbottomrule
     \end{tabular}
 \end{table}
@@ -307,7 +307,7 @@ I have been using simple phoneme-based representations for \textsc{phon} constra
     \ex {[}\textsc{phon} \textit{f$_p$(w)}$<$\textit{n}{]}
 \end{exe}
 
-
+\noindent
 where \textit{f$_p$} is a function which measures the distance of \textit{w} from the prototype \textit{p}, and \textit{n} is a set threshold. There are multiple ways of measuring distances between strings (e.g. the Levenshtein distance \citealt{Levenshtein.1966}), but the distance  could also be based on perception, i.e. what speakers perceive to be similar or different.\footnote{Unlike measures such as the Levenshtein distance, perceptual distances factor in the relative prominence of different phonemes, among other things. For example, confusion between /t/ and /d/ might be much higher than confusion between /k/ and /g/ in some languages, despite the fact that these pairs of phonemes only differ in one feature.}
 % In such cases, using a boolean algebra with negation, disjunction and conjunction is much simpler than attempting to define constraint composition.
 
@@ -334,7 +334,7 @@ An important feature of this system is that there are no statistics directly ass
 With the model in place, we can calculate the predictions of different hierarchy shapes. In a simple tree-like hierarchy, as in \figref{fig:formal-exe-tree}:
 
 \begin{figure}
-    \caption{Simple inheritance hierarchy.} \label{fig:formal-exe-tree}
+    \caption{Simple inheritance hierarchy} \label{fig:formal-exe-tree}
     \begin{forest} baseline
         [$\tau$ [$\sigma$ [$\gamma_1$] [$\gamma_2$]] [\textit{non}-$\sigma$ [$\pi_1$] [$\pi_2$]]]
     \end{forest}
@@ -347,7 +347,7 @@ However, if \textit{non}-$\sigma$ has no particular analogical constraints, then
 In a case of multiple inheritance as in \figref{fig:formal-exe-tree-2}, we expect that the $\gamma$ type will look like both $\tau$ and $\sigma$, but $\tau$ and $\sigma$ will share less. This is because $\gamma$ is stricter in its analogical constraints. Only those constraints which are compatible between $\Tau$ and $\Sigma$  will be available for items belonging to $\gamma$, while all constraints on $\Tau$ are available to $\tau$ and all constraints on $\Sigma$ to $\sigma$, and since these need not overlap, it is easier for $\tau$ and $\sigma$ items to be different from each other.
 
 \begin{figure}
-    \caption{Multiple inheritance example.} \label{fig:formal-exe-tree-2}
+    \caption{Multiple inheritance example} \label{fig:formal-exe-tree-2}
     \begin{tikzpicture}[baseline=(current bounding box.north)]
         \node (a) at (0,0){$\Alpha$};
         \node (S) at (-1,-1){$\Sigma$};
@@ -369,7 +369,7 @@ Although the predictions are clear, we cannot expect a perfect correlation betwe
 A final advantage of this model is that it is \textit{learnable} and thus compatible with usage-based approaches to language. Although it makes use of abstract types, these follow directly from the surface inflectional or derivational behaviour of lexemes. Because analogical constraints associated with abstract types must be inherited by more concrete types, they are also visible on the surface of words. The toy hierarchy in \figref{fig:exe-learnable} shows a simple example of how this works. The words on the leaf nodes directly instantiate the constraints in their supertypes, and these in turn instantiate the constraints in $\Alpha$ and $\Pi$.
 
 \begin{figure}
-    \caption{Complete hierarchy example.} \label{fig:exe-learnable}\scriptsize
+    \caption{Complete hierarchy example} \label{fig:exe-learnable}\scriptsize
     \begin{forest} baseline, qtree,
         [$\Tau$
         [$\Alpha$ \\{[\textsc{phon} \textit{/V\#/}]}
