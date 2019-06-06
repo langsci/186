@@ -103,7 +103,7 @@ Finally, it is important to mention that single case analogy is usually thought 
 
 \subsection{Proportional analogies}
 
-\is{Proportional analogy|(}
+\is{proportional analogy|(}
 
 \largerpage 
 A different kind of analogy is termed proportional analogy. In its simplest form, proportional analogy involves four elements, such that: \textit{A}:\textit{B}$=$\textit{C}:\textit{X}, \textit{A} is to \textit{B} as \textit{C} is to \textit{X}. The idea here is that we can find \textit{X} by looking at the relation between \textit{A} and \textit{B}. The earliest mention of this kind of analogy is in Aristotle's Poetics:
@@ -174,7 +174,7 @@ The singular and plural forms had different diphthongs in MHG and ENHG, but in t
 
 Proportional analogies are not really a process. Unlike the kinds of analogies discussed in the previous subsection, proportional analogies hold independently of speakers and cognitive processes. Proportional analogies hold, for example, for morphological paradigms of dead languages no longer spoken. But proportional analogies can motivate a leveling process in a paradigm, as with the examples in \REF{tab:exe-change-nhg}.
 
-\is{Proportional analogy|)}
+\is{proportional analogy|)}
 
 \subsection{Analogical classifiers}
   
@@ -261,6 +261,7 @@ Given the basic proportional analogy formula \textit{A:B=C:X}, the association b
 
 If we only consider these four classes, we can find proportional analogies that help predict most cells. For example, knowing the dative plural form \textit{haírdjam} `herdsman' is enough to know that its genitive plural form must be \textit{haírdjē}. However, some cells are not fully determined. Knowing that \textit{gibōs} `gift' is a nominative plural is not enough for us to determine that the nominative singular should be \textit{giba} and not \textit{gibs}, by analogy with \textit{dagōs} `day'.\footnote{Arguably, in a completely word-based approach there would also be confounding analogies with \textit{bandjōs}.}$^{,}$ \footnote{This situation where a cell in a paradigm only partially helps to predict another cell has been approached from an information theoretic perspective \autocite{MoscosodelPradoMartin.2004a, Ackerman.2013a, Blevins.2013, Ackerman.2016, Bonami.2016}. This approach measures the conditional entropy between cells in a paradigm, and thus quantify how informative different cells are about each other. In this book I pursue a different approach using accuracy measures.}
 
+\largerpage[2]
 From the perspective of analogical classifiers, the alternative is that the inflectional class completely determines all cells of the paradigm of any lexeme. The individual cells, in turn, carry information about the inflection class. The distinction might seem trivial, but it requires an important abstraction step. From the analogical classifier perspective, the form \textit{haírdjam} uniquely determines that \textit{haírd} belongs to class \textit{-ja} and, similarly, the form \textit{gibōs} should uniquely determine that \textit{gib} belongs to class \textit{-o}. Examples \REF{exe-proportional-schema} and \REF{exe-classifier-schema} schematically represent how each approach works.
 
 \begin{exe}
@@ -316,8 +317,7 @@ Many of the studies that have used one or the other also argued for why the alte
 
 \subsection{Simple rules}
 
-\is{Rule systems|(}
-
+\is{rule systems|(}
 Contextual rules are probably the oldest implementation of analogical classifiers, but they are also not associated with the word \textit{analogy} very often. Contextual rules are commonly found in phonology (\citealt{Chomsky.1968} and \citealt{Goldsmith.2011} among many others), but can be used for pretty much any domain. The format of contextual rules is usually \textsc{p / c}, where \textsc{p} stands for some process and \textsc{c} stands for a given context. Of course, not all uses of contextual rules count as analogical classifiers, but this does not prevent the implementation of an analogical classifier by using contextual rules. We can easily convert the format above into \textsc{c / f}, where \textsc{c} stands for a class and  \textsc{f} for a feature, meaning that if an item has some feature \textsc{f} it then belongs to class \textsc{c}.
 
 Phenomena that can be described in this manner are usually very small (in number of classes) and the generalizations tend to be rather straightforward. One well known example in the literature is the nominative marker in Korean \autocite{Lee.1989, Song.2006}.\footnote{The actual distribution of this particle is more complex than just a nominative marker. See \textcite{Song.2006} for a thorough description of its morphosyntactic properties.} Korean nouns take the nominative marker \textit{-i} after consonants and \textit{-ka} after vowels as seen in \REF{korean-examples}:
@@ -387,13 +387,12 @@ Phonologically conditioned allomorphy is a well known problem and there are many
 
 There are several reasons why phonologically conditioned allomorphy presents difficulties for traditional grammar theories. The main one is that this is a phenomenon which seems to be completely unmotivated and which adds unnecessary complexity to the grammar. The second reason is that many cases do not seem to follow any sort of clear rule pattern (although as we will see, if one looks closely enough, this is not the case). The lack of clear patterns means that the rules in the grammar must make reference to arbitrary features or adhoc constraints.
 
-\is{Phonologically conditioned allomorphy}
-
-\is{Rule systems|)}
+\is{phonologically conditioned allomorphy}
+\is{rule systems|)}
 
 \subsection{Schemata}
 
-\is{Schemata|(}
+\is{schema|(}
 
 The previous subsection showed that Spanish plural formation, although relatively simple, is not uniquely determined by one single rule, but rather by several rules that make reference to the different endings of nouns. With this example in mind, one might ask how specific the phonological environment can be, and how many different possible environments there can be that determine a given alternation. There is no theory-internal or theoretically motivated answer to this question. In principle, the context of a rule could make reference to many segments, and one could have a system with dozens of different contexts. While the formal literature talks about rules, the usage-based literature talks about schemata.
 
@@ -430,11 +429,11 @@ It is important to note that output-oriented schemata are a way of generalizing 
 
 The difference between schemata and rules is a subtle one, and it usually has more to do with cognitive representation and performance. Both rules and schemata would need to be formalized before one could establish that they are not equivalent. Currently, there is no way of assessing whether the difference is spurious. In any case, it is always possible to translate a rule-based system to a schema-based system and the other way around. In the end, the use of one or the other seems to be more determined by the theoretical background of the researcher. Formal linguists usually prefer the use of rules, while cognitive and usage-based linguists prefer schemata.
 
-\is{Schemata|(}
+\is{schema|(}
 
 \subsection{Multiple-rule systems}
 
-\is{Multiple rule systems|(}
+\is{rule systems!multiple|(}
 
 The generalization of simple rule-based systems is the use of multiple-rule systems. There is no unified theory of how multiple-rule systems (for the purpose of modelling allomorphy) should work. A system could include a specific order of application, follow Panini's principle\footnote{Panini's principle says that in cases where two rules compete with each other, the more specific rule will win the competition \autocite{Zwicky.1986}.}, or be entirely ordering agnostic. One can write rules that only look at endings of words, complete word forms, semantics, etc. Rules can be categorical, assign weights, or be probabilistic.  Since there is no agreement regarding what the properties of these systems should be, I will briefly discuss two cases from the literature.
 
@@ -528,11 +527,11 @@ To evaluate their model against the purely analogical model, \textcite{Albright.
 
 Since \citeauthor{Albright.2003}' (2003) original model works from inflected forms to inflected forms, it is not, in the strict sense, an analogical classifier. However, the minimal generalization learner as a method for inferring rules could easily be deployed in an analogical classifier. An important aspect of \citet{Albright.2003}'s system is that the rules it produces are weighted rules, unlike the rules in \citeauthor{Viks.1994}' (1994) system. This also means that there is no rule-ordering but weight comparison. If two different rules make different predictions for the same input lexeme, the prediction with the highest weight wins. Rule weights correspond, to a certain extent, to the idea of prototypes in the schema-based model. Rules wight stronger weights capture the more prototypical shapes in the system.
 
-\is{Multiple rule systems|)}
+\is{rule systems!multiple|)}
 
 \subsection{Neural networks and analogical modelling}
 
-\is{Neural networks}
+\is{neural network}
 
 Two of the main computational implementations of analogy, and the ones I will focus on in this section, are neural networks and Analogical Modelling (AM).\footnote{Other exemplar-based models have received considerably less attention, see \citet{Matthews.2005} for an overview.} The use of neural networks in linguistics has a relatively long history \autocites{Bechtel.2002, Churchland.1989, McClelland.1986, Rumelhart.1986, Rumelhart.1986a}. The early models were labelled connectionist models and were aimed at explaining much more than just the choice between alternatives. In the second part of this book I will give a more detailed explanation of how neural networks work, but the basic idea of neural networks is that they represent (linguistic) systems in the form of weights between input, hidden and output nodes. In the context of connectionist models, input nodes see the surface linguistic forms, hidden nodes are used by the networks to represent the system in a non-symbolic way and output nodes produce the surface outputs.\footnote{In principle, neural networks simply relate inputs to outputs, with an arbitrary number of intermediate hidden layers. Inputs and outputs can be anything, not just surface linguistic forms.}
 
@@ -558,7 +557,7 @@ It also follows that other approaches to analogical classifiers do practically t
 
 \subsection{Analogy or rules}
 
-\is{Analogy and rules|(}
+\is{analogy and rules|(}
 
 The discussion of analogy/similarity systems vs rule-based systems is not new. \textcite{Nosofsky.1989} observed that rules can be used to compute similarity, which in turn would produce analogical systems. The distinction between both kinds of processes is not a simple one. The most explicit treatment of the differences between analogy and rules is given by \textcite{Hahn.1998}. The authors first acknowledge that with the common conception of rules vs analogy (the authors use the term `similarity' ``the best empirical research can do is to test particular models of each kind, not `rules' or `similarity' generally'' (199), but then attempt to provide a clear way of distinguishing between rules an analogy.
 
@@ -601,8 +600,7 @@ Their point is that the distinction about abstractness is important if we are co
 This distinction is not very convincing, because it simple makes reference to a way of capturing similarity, which is mostly tangential to all other properties of analogical models. As \textcite[5]{Albright.2003} then point out, most connectionist models can infer structured similarity, which is why they do not consider these models as pure analogy. \textcite{Albright.2003} show that structured similarity seems to be a fundamental property of the linguistic systems they investigate, which they take to be support for rule rule-based models over analogical models. However, although it is true that some models ignore structure altogether, lumping connectionist models together with rule-based models based on whether phonological structure is at play or not draws an unnecessary ad-hoc line  between analogy and rules. From this perspective, none of the models I use for the case studies are purely analogical, since they heavily make use of structural constraints on the similarity function, but they certainly are nothing like typical rule-based models.
 
 Finally, authors like \textcite{Pothos.2005}, working on analogy from a more general perspective and not specifically on linguistic systems, have also arrived at the conclusion that similarity (analogical) models and rule models are simply two extremes of the same gradient. For that reason, I will not attempt to draw clear distinctions between analogical and rule-based systems. I will employ neural networks for the case studies, but these models would work equally well with hand written rules or AM.
-
-\is{Analogy and rules|)}
+\is{analogy and rules|)}
 
 \subsection{Mental representations vs grammatical relations}
 

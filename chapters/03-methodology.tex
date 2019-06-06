@@ -112,8 +112,7 @@ We can apply this to our previous example. We split the data set into a training
 \end{table}
 
 To calculate the actual class probabilities from the output weights, we use the softmax function. The intuition of this function is that, given a vector of weights, it will transform that vector into a vector of probabilities, where the element with the highest weight will receive the highest probability, and all probabilities add up to 1. The general form of this function is given in equation \eqref{eq:softmax}. In prose, we exponentiate each weight, and divide by the sum of all exponentiated weights.  
-
-\is{Softmax}
+\is{softmax}
 
 \begin{equation}\label{eq:softmax}
     S(y_i) = \frac{e^{y_i}}{\sum_{j}^{e^{y_j}}}
@@ -177,11 +176,11 @@ There are three additional statistical values I will use in certain cases are: \
 
 Finally, the kappa statistic compares the observed accuracy with the expected accuracy (under random chance). The expected accuracy is calculated as follows. We multiply the observed frequency of A by the predicted frequency of A, and the observed frequency of B by the predicted frequency of B. We then divide these numbers by N, add them together and divide again by N. Thus, we get:
 
-\is{True Positive}
-\is{True Negative}
-\is{False Positive}
-\is{False Negative}
-\is{Expected Accuracy}
+\is{true positive}
+\is{true negative}
+\is{false positive}
+\is{false negative}
+\is{expected accuracy}
 
 \begin{equation}
     \textrm{Expected.Accuracy}=\frac{\frac{(\textrm{TP}+\textrm{FN})*(\textrm{TP}+\textrm{FP})}{\textrm{N}} + \frac{(\textrm{TN}+\textrm{FP})*(\textrm{TN}+\textrm{FN})}{\textrm{N}}}{\textrm{N}}
@@ -194,7 +193,7 @@ Finally to calculate the kappa statistic we use the following equation:
 \end{equation}
 
 \is{Kappa score}
-\is{Accuracy}
+\is{accuracy}
 
 Kappa scores\footnote{In our case: $\textrm{Expected.Accuracy}=\frac{\frac{3*(3+2)}{7} + \frac{2*(2+2)}{7}}{7} = \frac{\frac{15}{7}+\frac{4}{7}}{7} = 0.4694$. The accuracy is $5/7=0.7143$. Thus, we have that $\textrm{kappa} = \frac{0.7143 - 0.4694}{1 - 0.4694}=0.4615$. Notice that the Expected Accuracy is different from the No Information Rate because the former is taken from a model that knows about the distribution of the outcomes in the traning dataset, while the latter is a completely random assignment of outcomes to inputs in the testing dataset.} go from 0 (in a perfectly random model) to 1 (in a perfectly accurate model), a kappa of 0.5 is halfway between the expected accuracy and 1. The advantage of using kappa is that it tells us how well above random chance the model is performing, and, to a degree, it allows to make model comparisons. The disadvantage is that there is no standarized interpretation and no objective cutoff point. A model with a kappa of 0.2 is not inherently bad, nor can it be said that it is at chance level. However, we can say that a model with a kappa of 0.7 is better than a model with a kappa of 0.5.
 
@@ -320,14 +319,14 @@ The models in the following chapters are too large and complex to either plot, o
 
 \section{Measuring variable importance}
 
-\is{Variable importance}
+\is{variable importance}
 
 An issue with neural networks is the fact that it is relatively difficult to interpret the exact importance that the different factors have on the overall model. Unlike linear or logistic regression, we cannot directly explore the coefficients. However, in some cases, it is important to understand which factor plays a more or less important role predicting some dataset. To address this question we can make use of additive and subtractive modelling. The idea is very simple. For subtractive modelling we start with the complete model (with all predictors), and we compare its accuracy and kappa scores to models leaving one predictor out. This technique allows us to compare the relative importance of each individual predictor in the context of the complete model, each individual predictor is. The additive variant of this idea consists of starting with a null model without predictors, and one by one, adding the original predictors back and comparing at each step the accuracy and kappa scores.
 
 \section{Clustering and distances between classes}
 
-\is{Clustering}
-\is{Class distance}
+\is{clustering}
+\is{class distance}
 
 The second important method I will use throughout this book is that of clustering and measuring class similarity. Imagine the new made up set of stems whose inflectional class we want to predict as shown in \REF{inf-class-2}:
 
