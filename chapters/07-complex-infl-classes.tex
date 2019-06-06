@@ -11,7 +11,7 @@ So far I have only looked at systems with relatively few classes, and hierarchie
 
 \il{Spanish|(}
 
-In Spanish there are three clear inflectional classes given by the thematic vowel of the verb: \textit{-a(r)} (e.g. \textit{cantar}, `to sing'), \textit{-e(r)} (e.g. \textit{correr} `to run') and \textit{-i(r)} (e.g. \textit{reir} `to laugh'), also referred to as first class, second class and third class, respectively. Depending on the variety, inflectional paradigms in Spanish consist of around 53 content cells, exemplified in \tabref{tab:conj-sp} for \textit{amar} `to love'. The \textsc{2pl} forms given in \tabref{tab:conj-sp} are only found in Spain, with Latin American Spanish using the \textsc{3pl} form for the \textsc{2pl}. Additionally, the future subjunctive is rare, and it is found mostly in fixed expressions: \textit{sea lo que fuere} `whatever it may be'\footnote{Notice however that it is easy to find uses of this form online: \textit{Demos la vida si fuere necesario} `let us give our lives if it should be needed'. \url{http://portaluz.org/demos-la-vida-si-fuere-necesario-1570.htm}, consulted 12.11.2016.}. Finally, the imperfect subjunctive exhibits overabundance \autocites{Thornton.2010a, Thornton.2010} between \textit{-se} and \textit{-ra}, with both forms having exactly the same morphosyntactic content \autocites{Cuervo.1981, DeMello.1993, Kempas.2011, Rojo.2008, Schwenter.2013}.
+In Spanish there are three clear inflectional classes given by the thematic vowel of the verb: \textit{-a(r)} (e.g. \textit{cantar}, `to sing'), \textit{-e(r)} (e.g. \textit{correr} `to run') and \textit{-i(r)} (e.g. \textit{reir} `to laugh'), also referred to as first class, second class and third class, respectively. Depending on the variety, inflectional paradigms in Spanish consist of around 53 content cells, exemplified in \tabref{tab:conj-sp} for \textit{amar} `to love'. The \textsc{2pl} forms given in \tabref{tab:conj-sp} are only found in Spain, with Latin American Spanish using the \textsc{3pl} form for the \textsc{2pl}. Additionally, the future subjunctive is rare, and it is found mostly in fixed expressions: \textit{sea lo que fuere} `whatever it may be'\footnote{Notice however that it is easy to find uses of this form online: \textit{Demos la vida si fuere necesario} `let us give our lives if it should be needed'. \url{http://portaluz.org/demos-la-vida-si-fuere-necesario-1570.htm}, consulted 12-11-2016.}. Finally, the imperfect subjunctive exhibits overabundance \autocites{Thornton.2010a, Thornton.2010} between \textit{-se} and \textit{-ra}, with both forms having exactly the same morphosyntactic content \autocites{Cuervo.1981, DeMello.1993, Kempas.2011, Rojo.2008, Schwenter.2013}.
 \begin{table}
   \centering
   \begin{tabular}{lllll}
@@ -360,7 +360,7 @@ Extracting the stem of the verbs was relatively easy in this case, because we de
 
 There are three interesting models to look at. First, we test how well our analogical model can predict the thematic vowel of the verb. This is the basic model, which should basically capture insights mentioned before \autocite{Boye.2004}. The second model should predict the minor patterns. Finally, the third model will deal with the combination of both dimensions, giving us a the full predictions of verb inflection classes.
 
-We start with the model predicting the major inflection pattern. This model only looks at the final three segments of the stems \texttt{thematic vowel $\sim$ final.1 + final.2 + final.3}\footnote{The model had eight hidden nodes, and a decay rate of 0.09. There was no noticeable improvement from using more structured predictors.}. The results are presented in \tabref{tab:spanish-verbs-theme-v}, and the corresponding statistics in \tabref{tab:spanish-verbs-theme-v-stats}.
+We start with the model predicting the major inflection pattern. This model only looks at the final three segments of the stems \texttt{thematic vowel $\sim$ final.1 + final.2 + final.3}.\footnote{The model had eight hidden nodes, and a decay rate of 0.09. There was no noticeable improvement from using more structured predictors.} The results are presented in \tabref{tab:spanish-verbs-theme-v}, and the corresponding statistics in \tabref{tab:spanish-verbs-theme-v-stats}.
 
 
     
@@ -804,6 +804,7 @@ For Kasem, it is claimed that the [+ATR] feature is carried by the root, and it 
 
 \subsection{A simple analysis of Kasem noun classes}
 
+\largerpage
 There are different takes on what the number markers in Kasem are. The ones I propose here are based on my own analysis of the system. Alternative models are of course possible, but should have little impact on the analogical system. As a guiding principle for my analysis, I tried to maximize morphology and minimize phonology. Whenever there is enough evidence for a marker to be morphologically motivated, I rejected the phonological explanation for it. This is a conservative approach. In the worst case scenario, I am proposing more markers than there are in the system, which means that the analogical model will have a harder time to predict the classes. A smaller set of markers would result in a better model. %explain why
 
 Kasem has many different number markers, and some of these seem to be more clearcut than others. First, I will introduce the markers where there should be less room for an alternative analysis, and in the following subsection I will introduce those cases where different approaches are possible. This runs counter to the standard way of analyzing Kasem. Previous takes on Kasem have tried to minimize the number of exponents by way of using phonological rules and underlying representations based on some further assumptions. So, for example, \textcite[184]{deHaas.1987} analyses the example in \REF{kasem-wrong-1} as having a marker \textit{-i} which coalesces with the underlying vowel in the stem and turns into /e/, instead of there being a marker \textit{-e}.
@@ -1070,6 +1071,7 @@ Finally, whether we should consider \textit{-ŋ-} and \textit{-g-} as independen
 
 \subsubsection{The \textit{-r-} marker}
 
+\largerpage[2]
 A similar situation arises in the plural with the \textit{-rV}\footnote{In earlier works it is common to find a reference to a marker \textit{du} instead. This seems to be because /r/ and /d/ are allophones in the language. Since the source I am using uses /r/, I will use this notation.} markers. The examples in \REF{rupl-kasem} show the \textit{-r-} marker, which almost exclusively appears in the plural (with the exception of the two words in \REF{rusg-kasem-2}). We find \textit{-r-} appearing mostly with \textit{-ə} and \textit{u}, and only in a few cases with \textit{-o}. Additionally, the \textit{-ru} combination is found co-occurring with quite a few different singular markers.
 
 \begin{exe}
@@ -1129,6 +1131,7 @@ If these were a purely phonological process, the symmetry would be a bit suspici
       b. & kadag\textit{um}  & kadag\textit{wi} & `kind of sorghum'              \\
     \end{tabular}
 \end{exe}
+
 
 Although one could postulate some kind of /m/ deletion rule, this overly complicates what could be a straightforward system. This is even more clear from the perspective of the plural, especially cases with overabundance as those shown in \REF{over-m}.
 
@@ -1235,7 +1238,7 @@ The final two segmental markers are the marker \textit{-iine}, shown in \REF{inn
 
 These two markers are infrequent and are not featured in the literature, but it seems unlikely that they could be analyzed as resulting from phonological processes.
 
-Finally, there is a $\emptyset$ marker. This marker is rather rare, with only 15 examples, 12 of which end in /[+velar]ə/ in the singular. Of course, a \textit{no marker} alternative works equally well and makes no real difference for the analysis. A phonological explanation could work for those cases where there is a final vowel (like in \REF{0-kasem}d.), in which one could postulate coalescence between the vowel in the stem and the marker, and thus we do not see any extra marker. But this explanation is much less likely for the examples with a consonant ending.
+Finally, there is a $\emptyset$ marker. This marker is rather rare, with only 15 examples, 12 of which end in /[+velar]ə/ in the singular. Of course, a \textit{no marker} alternative works equally well and makes no real difference for the analysis. A phonological explanation could work for those cases where there is a final vowel (like in (\ref{0-kasem}d)), in which one could postulate coalescence between the vowel in the stem and the marker, and thus we do not see any extra marker. But this explanation is much less likely for the examples with a consonant ending.
 
 \begin{exe}
     \ex \label{0-kasem}
@@ -1268,7 +1271,7 @@ There are two phonological processes found in Kasem which seem to mark plurality
     \end{tabular}
 \end{exe}
 
-In \REF{dp-kasem1}b we see that the lengthening can be of the last vowel and in \REF{dp-kasem1}c we see that it can be of the last consonant. This strongly speaks for a mora insertion which can either attach to the consonant or vowel. This analysis is supported by some overabundant examples where both effects are found. In \REF{CCVV-kasem} we see that this phenomenon is even independent of the additional segmental plural marker chosen.
+In (\ref{dp-kasem1}b) we see that the lengthening can be of the last vowel and in (\ref{dp-kasem1}c) we see that it can be of the last consonant. This strongly speaks for a mora insertion which can either attach to the consonant or vowel. This analysis is supported by some overabundant examples where both effects are found. In \REF{CCVV-kasem} we see that this phenomenon is even independent of the additional segmental plural marker chosen.
 
 \begin{exe}
     \ex \label{CCVV-kasem}
@@ -1317,6 +1320,7 @@ I do not consider suppletion among the classes for the analogical model, but in 
 
 \subsubsection{Compounds}
 
+\largerpage
 For most compounds, the only part that changes is the rightmost (the adjective). There are, however, exceptions with compounds with the word \textit{kandwɛ} `stone', among some others as in \REF{except-stone}.
 
 \begin{exe}
@@ -1339,7 +1343,7 @@ I will leave this case as an open problem since the data are not conclusive as t
 
 \subsection{Materials}
 
-The dataset, as well as all examples cited here, come from the Kasem Burkina Faso Dictionary \autocite{Niggli.2016} in its online version.\footnote{\url{kassem-bf.webonary.org/}, visited on 10-11-2016.} The dictionary lists for each noun its singular and plural forms, as well as the tones for the singular form. The tones for the plural form are only listed in a few exceptional cases, which seems to suggest that the plural and singular forms have the same tones. This, however, is hard to extrapolate to words where the plural is longer or shorter than the singular. From 2000 nouns listed in the dictionary, I removed 30 cases where either the marker was completely unclear, the plural showed unpredictable suppletion, or where there was reason to suspect an error (i.e. nouns where the ATR feature did not match across all their vowels, etc.), and ended up with a total of 1970 nouns.
+The dataset, as well as all examples cited here, come from the Kasem Burkina Faso Dictionary \autocite{Niggli.2016} in its online version.\footnote{\url{http://kassem-bf.webonary.org/}, visited on 10-11-2016.} The dictionary lists for each noun its singular and plural forms, as well as the tones for the singular form. The tones for the plural form are only listed in a few exceptional cases, which seems to suggest that the plural and singular forms have the same tones. This, however, is hard to extrapolate to words where the plural is longer or shorter than the singular. From 2000 nouns listed in the dictionary, I removed 30 cases where either the marker was completely unclear, the plural showed unpredictable suppletion, or where there was reason to suspect an error (i.e. nouns where the ATR feature did not match across all their vowels, etc.), and ended up with a total of 1970 nouns.
 
 For the two nouns in \REF{kasem-alt-sing} the dictionary presented an alternative in the singular. For both these cases I only considered the main form.
 
@@ -1362,6 +1366,7 @@ In the cases of polysemy I left all entries in the table:
     \end{xlist}
 \end{exe}
 
+\largerpage[2]
 As we have seen in multiple examples already, Kasem, just like Hausa, presents some overabundance in the plural forms:
 
 \begin{exe}
@@ -1455,6 +1460,7 @@ After the previous discussion it is useful to look at the pairings between segme
 
 If we cross-classify all factors the result are 144 nonempty classes (ignoring ATR), with most classes having less than 50 members, and 63 classes of only 1 member. Because of this, a flat list of inflection classes looks particularly unconvincing. A more straightforward approach is to use cross-classification as with the Spanish systems.
 
+\largerpage[2]
 To model the complete space of inflectional classes several trees are required. The first thing we have to recognize is that markers like \textit{-i}, are not in themselves plural or singular markers, but simply number markers. Whether they indicate plural or singular depends on their distribution with other markers. There are two alternatives at this point, either overspecification as in \figref{fig:number-markers-kasem}, or underspecification as in \figref{fig:number-markers-kasem-under}.
 
 \begin{figure}
@@ -1596,7 +1602,7 @@ In several of the models below, when predicting a subtree (e.g. \textit{lengthen
 
 \subsubsection{Compounds}
 
-We now turn to the analogical modelling. A difficult decision regarding this particular dataset is whether to include compounds or not. Including them means that, because compounds usually have the same plural marker as the simplex noun, the model will be able to remember some cases. That is, the cross-validation is not completely perfect. On the other hand, not all compounds share the same plural marker as their simplex form. Additionally, it is not always clear what sort of compounds we are actually dealing with. Some seem semantically transparent like those in \REF{different-pl-kasem}a and \REF{different-pl-kasem}b, but others less so like those in \REF{different-pl-kasem}f and \REF{different-pl-kasem}g.
+We now turn to the analogical modelling. A difficult decision regarding this particular dataset is whether to include compounds or not. Including them means that, because compounds usually have the same plural marker as the simplex noun, the model will be able to remember some cases. That is, the cross-validation is not completely perfect. On the other hand, not all compounds share the same plural marker as their simplex form. Additionally, it is not always clear what sort of compounds we are actually dealing with. Some seem semantically transparent like those in (\ref{different-pl-kasem}a) and (\ref{different-pl-kasem}b), but others less so like those in (\ref{different-pl-kasem}f) and (\ref{different-pl-kasem}g).
 
 \begin{exe}
     \ex \label{different-pl-kasem}
@@ -1798,7 +1804,7 @@ This model is, once more, already quite good. The type of lengthening a stem und
     \caption{Accuracy scores for \tabref{tab:length-kasem-2}}\label{tab:length-kasem-2-stats}
 \end{table}
 
-\clearpage 
+%\clearpage 
 The overall evaluation is shown in \figref{fig:overall-fi-length}. This table presents a more dramatic increase in both kappa and accuracy after adding the segmental number markers. In this case both the singular and plural segmental markers had a very similar importance. More interesting, however, is the fact that in this case we see the opposite effect in the final three segments of the stem. In the previous case of predicting diphthongization, only the final segment was independently predictive of the outcome, here the penultimate and antepenultimate segments are both independently predictive of the lengthening. This again goes to show that different subtrees in the hierarchy have their own analogical relations for their members. Finally, it is worth noting that when predicting diphthongization there was no effect from adding \texttt{lengthening} as a predictor, and here there is no effect from adding \texttt{diphthong} as a predictor. What this suggests is that the correlations described before are already being captured by the final segments. This is the first indication that there is heavy redundancy in the system. I will come back to this in the following sections.
 
 \begin{figure}

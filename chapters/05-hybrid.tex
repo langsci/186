@@ -38,11 +38,12 @@ Some modern grammars give extremely general descriptions of this alternation: ``
 Instrumental -ет / -ем is normal with stems in -c, where vocative has -e/-e and the first-palatalization alternation, as ótac/отац 'father', vocative осе/оче. -от/-ом tends to be kept in foreign words and names (Kíš-от/Кйш-ом) and in words with e in the preceding syllable: padež-от/падеж-ом 'case'. \autocite[320]{Brown.1993}
 \end{quotation}
 
+\largerpage[2]
 As can be seen the idea that analogical relations help predict this particular alternation is not really new. However,  \textcite{Lecic.2015} convincingly shows that for the majority of the proposed prescriptive rules of where and when to use \textit{-em} or \textit{-om}, exceptions can be found in a corpus. This essentially means that there is no obvious categorical rule that correctly predicts whether a noun will take \textit{-em}, \textit{-om} or both. Secondly, and more importantly, the author shows that overabundant nouns, even when very infrequent with one of the two forms, are acceptable for speakers, whereas non-overabundant nouns (according to the corpus) are acceptable with only one of the two forms. This strongly indicates that there really are three classes of nouns in \textsc{bcs}: \textit{-om} nouns, \textit{-em} nouns and \textit{-om/-em} nouns.
 
 \subsection{Modelling the system}
 
-One approach how to model overabundance with type hierarchies can be achieved by employing hybridization \autocite{GuzmanNaranjo.2016}. Hybridization assumes that there are two basic types, \textit{exclusively-em} and \textit{exclusively-om}. Nouns of type \textit{exclusively-em} can only take the marker \textit{-em} and similarly for \textit{exclusively-om}. Nouns of a hybrid type \textit{em$\sim$om} can take either \textit{-em} or \textit{-om}. This hybrid type is related to the other two types as shown in \figref{fig:hybrid-bcs}.
+One approach how to model overabundance with type hierarchies can be achieved by employing hybridization \autocite{GuzmanNaranjo.2016}. Hybridization assumes that there are two basic types, \textit{exclusively-em} and \textit{exclusively-om}. Nouns of type \textit{ex\-clusively-em} can only take the marker \textit{-em} and similarly for \textit{exclusively-om}. Nouns of a hybrid type \textit{em$\sim$om} can take either \textit{-em} or \textit{-om}. This hybrid type is related to the other two types as shown in \figref{fig:hybrid-bcs}.
 
 \begin{figure}
     \caption{Hybridization in \textsc{bcs} nouns} \label{fig:hybrid-bcs} \begin{forest} baseline, %qtree edges, 
@@ -78,6 +79,7 @@ In the present approach there are no constraints being inherited in the hierarch
 
 Because lexemes like \textit{princ} and \textit{car} belong to types \textit{om} and \textit{em}, both constructions can apply to them. Other implementations are possible, of course, but the important point is that the hierarchy in \figref{fig:hybrid-bcs} expresses that nouns that can take both markers share properties with those that can take only one.
 
+\largerpage[2]
 A complex issue that arises with hybrid hierarchies is what happens to the analogical filters in such cases. The analogical function for some leaf type contains all the generalizations, as well as exceptions, that determine whether any given lexeme belongs to said type or not. In terms of the model of analogy as a type constraint, the type \textit{em$\sim$om} inherits all analogical constraints from \textit{em} and \textit{om} as: [\textit{em$\sim$om} \textsc{phon}] = [\textit{em} \textsc{phon}] $\land$ [\textit{om} \textsc{phon}]. This means that nouns \textit{em$\sim$om} will end up looking like nouns from the classes \textit{excl-om} and \textit{excl-em}, because they must satisfy the same constraints.
 
 The prediction this approach makes is that we expect the confusion between \textit{em$\sim$om} and each of the two exclusive classes \textit{excl-em} and \textit{excl-om} to be relatively higher than the confusion between the two exclusive classes (\textit{excl-em} and \textit{excl-om}) themselves.
@@ -90,6 +92,7 @@ I take the stem of the nouns to be the instrumental singular minus the \textit{-
 
 \subsection{Results}
 
+\largerpage[2]
 The model is rather simple for this case. The predictors are the last two segments and the number of consonant clusters in the noun: \texttt{class $\sim$ final.1 + final.2 + n\_cluster}\footnote{This model had one hidden layer with 5 nodes and a decay rate of 0.01.}. The results of the model can be seen in \tabref{tab:ins-cro} and the corresponding statistics in \tabref{tab:ins-cro-stats}.
 
 \begin{table}
@@ -136,18 +139,15 @@ We see that the model does predict fairly well the declension class of these nou
   \caption{Proportion of confusion between classes in Croatian}\label{fig:croatian-results}
 \end{figure}
 
-\largerpage
+\largerpage[2]
 This distribution is exactly what the model predicts, but it also makes sense from a historical perspective. As mentioned above, it was \textit{em} nouns which lost their distinctive \textit{r}$^j$ which started taking \textit{om}. That is, only when a certain set of \textit{em} nouns started phonological shapes which would fit the \textit{om} class, did this nouns started being overabundant. We have thus a system that went from being perfectly predictable (as already mentioned in simple cases of phonological conditioned allomorphy) to overabundance.
-
 \il{Bosnian, Croatian and Serbian|)}
 
 \section{Frequency and analogical similarity: Russian diminutives}
 
-\il{Russian|(}
-\is{derivation|(}
-
 \subsection{Russian diminutives}
 
+\il{Russian|(}\is{derivation|(}%
 Nouns in Russian\footnote{A previous version of the study in this section was presented in Olinco 2016 \autocite{GuzmanNaranjo.2016a}.} can form the diminutive with a wide range of different suffixes. Some examples of diminutive suffixes are shown in \REF{dims-russian}.\footnote{For clarity I will use the Latin transliterations in the examples, but the models were trained using their Cyrillic forms.}
 
 \begin{exe}
@@ -278,7 +278,9 @@ Because there are not enough cases for the classes \textit{chik$\sim$ok} (f=7) a
 
 \subsection{Results}
 
-To predict the diminutive forms, I fitted a model using the formula: \texttt{diminutive $\sim$ final.1 + final.2 + length\_letters * n\_vowels + stress\_position * stressed\_vowel}. \\Basically, this model looks at the final two segments of the base nouns (in the nominative), the interaction between the length of the base and the number of vowels of the base, the position of the stress in the word (counting from the right) and the stressed vowel. The results can be seen in \tabref{tab:dim-russ} and the corresponding statistics in \tabref{tab:dim-russ-stats}. The relative importance of the predictors is shown in \figref{fig:factimp-plot-russian}.
+\largerpage
+To predict the diminutive forms, I fitted a model using the formula: \texttt{diminutive $\sim$
+  final.1 + final.2 + length\_letters * n\_vowels + stress\_position * stressed\_vowel}. Basically, this model looks at the final two segments of the base nouns (in the nominative), the interaction between the length of the base and the number of vowels of the base, the position of the stress in the word (counting from the right) and the stressed vowel. The results can be seen in \tabref{tab:dim-russ} and the corresponding statistics in \tabref{tab:dim-russ-stats}. The relative importance of the predictors is shown in \figref{fig:factimp-plot-russian}.
 
 \begin{table}
   \centering

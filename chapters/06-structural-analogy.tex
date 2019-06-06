@@ -115,12 +115,13 @@ I compiled a list of Swahili nouns with their corresponding classes by combining
   \caption{Type frequency of Swahili genders}\label{fig:class-freq-swahili}
 \end{figure}
 
-Because the classes are uneven in terms  of members, models including the whole data-set tended to under-perform\footnote{The reason is that the neural network models are sensitive to type frequency. This is not very important if the predictors are strong enough, but in cases where the predictors are weak, the model tries to optimize for general accuracy, and over-predicts the most frequent class.}. To control for this, I randomly extracted 378 nouns for each class (the size of the smallest class in the original data-set). This produced a final data-set with 1890 nouns in total.
+Because the classes are uneven in terms  of members, models including the whole data-set tended to under-perform.\footnote{The reason is that the neural network models are sensitive to type frequency. This is not very important if the predictors are strong enough, but in cases where the predictors are weak, the model tries to optimize for general accuracy, and over-predicts the most frequent class.} To control for this, I randomly extracted 378 nouns for each class (the size of the smallest class in the original data-set). This produced a final data-set with 1890 nouns in total.
 
 In terms of pre-processing, Swahili has a series of digraphs (e.g. \textit{mb} $\rightarrow$ /$^m$b/), which I converted into single character representations to aid the analogical model. Otherwise, this is a relatively poor data-set in terms of features. We do not have any extra semantic or morphological information to aid the models.
 
 \subsection{Results}
 
+\largerpage
 In our first model we investigate whether the first and second segments of the stem (that is, after removing the class prefixes) can predict to any degree the inflectional class of Swahili nouns with the model \texttt{class $\sim$ first.1 + first.2}.\footnote{With 0 hidden nodes and a decay rate of 0.1. A more complex model with interactions did not perform any better.} The results, shown in \tabref{tab:class-swa} and \tabref{tab:class-swa-stats}, are not very good in themselves. The accuracy is barely above chance, and the kappa score is very small. This basically means that there is very little information about inflection class just in the phonological shape of the stem. But this result is not really surprising. Swahili speakers encounter nouns with the prefix or some agreeing forms, and there is little ambiguity about their class.
 
 \begin{table}
@@ -225,7 +226,7 @@ Finally, we try a model that combines the first two segments of the noun, the la
   \caption{Overall statistics for Confusion Matrix in \tabref{tab:class-swa-last-first}}\label{tab:class-swa-last-first-stats}
 \end{table}
 
-\clearpage 
+%\clearpage 
 The overall evaluation of this final model can be seen in \figref{fig:overall-fi-class-sg-swahili}. 
 This figure basically shows that the main effect comes from the first segment, but that the other factors still play a minor role.
 
@@ -237,9 +238,9 @@ This figure basically shows that the main effect comes from the first segment, b
 
 The model including both beginning and ending of the nouns clearly performed better, and even though the main effect came from the beginning of the nouns, the ending did play a role.
 
+%\largerpage[2]
 It is possible that the current analogical relations of the Swahili noun classes are the product of some previous more regular system \autocite{Nurse.1993}, and not of actual productive schemas speakers use. Because the analogical effects are so weak, the most likely explanation in this case is that the semantic component is much stronger, and thus phonological analogy is not as important for speakers. The important point here is that we do see a stronger effect of the beginning of the stem 
 than of the ending of the stem.
-
 \il{Swahili|)}
 \is{prefixation|)}
 
@@ -362,7 +363,7 @@ Once more, classes that trigger prefixing processes are predictable from analogi
 
 \subsection{The Hausa plural system}
 
-The Hausa plural system is too complex to be fully explored here, but some of its properties are relevant to the overall theme of this chapter. First, there seems to be little agreement with regards to how many plural classes there are in Hausa, and an analysis could go anywhere between ``many'' \autocite{Migeod.1914}, around thirty \autocite{Schon.1862}, to twenty macro-classes \autocite{Newman.2000}, or the many more sub-classes Newman identifies. For this study I follow the macro-classes defined by \textcite{Newman.2000}, which are given in \tabref{tab:macro-hausa}\footnote{Because the dictionary I use for the data \autocite{Bargery.1951} does not distinguish between the retroflex and rolled \textit{r}, and between long and short vowels, I will not mark these features here. For tone representation I follow \textcite{Newman.2000}, with high tone unmarked, low tone marked with a grave accent, and falling tone with a circumflex accent.}.
+The Hausa plural system is too complex to be fully explored here, but some of its properties are relevant to the overall theme of this chapter. First, there seems to be little agreement with regards to how many plural classes there are in Hausa, and an analysis could go anywhere between ``many'' \autocite{Migeod.1914}, around thirty \autocite{Schon.1862}, to twenty macro-classes \autocite{Newman.2000}, or the many more sub-classes Newman identifies. For this study I follow the macro-classes defined by \textcite{Newman.2000}, which are given in \tabref{tab:macro-hausa}.\footnote{Because the dictionary I use for the data \autocite{Bargery.1951} does not distinguish between the retroflex and rolled \textit{r}, and between long and short vowels, I will not mark these features here. For tone representation I follow \textcite{Newman.2000}, with high tone unmarked, low tone marked with a grave accent, and falling tone with a circumflex accent.}
 
 \begin{table}
   \centering
@@ -423,15 +424,8 @@ The results of this model can be seen in \figref{fig:class-hausa-cm} and the cor
 
 
 For comparison, a model that does not specify structural analogy: \texttt{plural class $\sim$ final.1*T.1 + final.2 + final.3 + CVCV.4 + length}\footnote{The model included no hidden nodes and a decay rate of 0.1.}, can be seen in \tabref{tab:class-hausa-stats-2}. It is not surprising that this model also performs relatively well, after all, the predictor \texttt{final.1} captures the same information as the predictor \texttt{V.1}.
-\largerpage
-
-
-\begin{figure}[h!]
-  \includegraphics[width=0.9\textwidth]{./figures/hausa/plurals-cm.pdf}
-  \caption{Heatmap for the model predicting plural forms in Hausa}\label{fig:class-hausa-cm}
-\end{figure}
-
-\begin{table}[h!]
+\largerpage[2]
+\begin{table}%[h!]
   \centering
   \begin{tabular}{rl}
     \toprule
@@ -446,7 +440,14 @@ For comparison, a model that does not specify structural analogy: \texttt{plural
   \caption{Accuracy scores for \figref{fig:class-hausa-cm}}\label{tab:class-hausa-stats}
 \end{table}
 
-\begin{table}[h!]
+\clearpage
+\begin{figure}%[h!]
+  \includegraphics[width=0.9\textwidth]{./figures/hausa/plurals-cm.pdf}
+  \caption{Heatmap for the model predicting plural forms in Hausa}\label{fig:class-hausa-cm}
+\end{figure}
+
+
+\begin{table}%[h!]
   \centering
   \begin{tabular}{rl}
     \lsptoprule
@@ -460,7 +461,8 @@ For comparison, a model that does not specify structural analogy: \texttt{plural
   \end{tabular}
   \caption{Accuracy scores for the non-structurally defined model}\label{tab:class-hausa-stats-2}
 \end{table}
-\clearpage 
+%\clearpage 
+%\newpage
 
 We can compare model performance for both models (\figref{fig:struc-overall} and \figref{fig:nostruc-overall}). These evaluations reveal that indeed \texttt{final.1} and \texttt{V.1} have more or less the same impact on the model, but for the non-structurally defined model all other predictors become rather insignificant in the subtractive evaluation. The segments captured by both models are the same, but the additional structure does clearly play a role.
 
@@ -475,6 +477,7 @@ We can compare model performance for both models (\figref{fig:struc-overall} and
     \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the non-structurally defined model}\label{fig:nostruc-overall}
 \end{figure}
 
+\largerpage
 We can also see that the more structural predictors not only achieve a higher accuracy, but also have more independent weights (higher in accuracy in the subtractive evaluations). The main factors are clearly the vowels (and their interaction with tone), while the consonant has less influence. This strongly matches the broken plurals we see in Hausa, where the consonant remains stable and the vowels before and after it are changed.
 
 \il{Hausa|)}
