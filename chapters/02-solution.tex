@@ -53,8 +53,8 @@ The example in \figref{fig:exe-hierar-verbs-1} shows schematically the idea behi
 
 \begin{figure}
     \caption{Example of multiple inheritance} \label{fig:exe-hierar-verbs-1}
-    \begin{forest} baseline
-        [\textit{word}, for tree={parent anchor=south, child anchor=north}
+    \begin{forest} baseline, for tree={parent anchor=south, child anchor=north}
+        [\textit{word}
         [\textit{pos} [\textit{noun}] [\textit{adjective}] [\textit{verb}
         [\textit{kill}, name=kill] [\textit{run}, name=run]]
         ]
@@ -122,8 +122,8 @@ We can expand the hierarchy in \figref{fig:exe-hierar-verbs-1} to include inflec
 
 \begin{figure}
     \scalebox{0.9}{\caption{Example hierarchy for English verb inflection} \label{fig:exe-hierar-verbs-2}
-    \begin{forest} baseline
-        [\textit{word}, for tree={parent anchor=south, child anchor=north}
+    \begin{forest} baseline, for tree={parent anchor=south, child anchor=north}
+        [\textit{word}
         [\textit{pos} [\textit{noun}] [\textit{adjective}] [\textit{verb}
         [\textit{kill}, name=kill] [\textit{run}, name=run]]
         ]
@@ -168,10 +168,10 @@ The feature structure in \REF{kill-verb} says that the lexical entry for the ver
 Having introduced feature structures and type hierarchies in the previous section, we can now address the question of how analogy interacts with grammar formulated in the previous chapter. The solution I will pursue in this book is to link analogical classifiers to types in the hierarchy. The claim is spelled out in \REF{claim-book}:
 
 \begin{exe}
-    \ex \label{claim-book} \textbf{Analogical constraints are limited to types and can only run along the inheritance lines of the hierarchy.}
+    \ex \label{claim-book} \emph{Analogical constraints are limited to types and can only run along the inheritance lines of the hierarchy.}
 \end{exe}
 
-I will call this hypothesis \textbf{Analogy as a type constraint} (\textsc{atc}). As far as I am aware, this is not an explicit assumption of any analogical classifier that has been proposed in the literature, but implicitly most models seem to make use of something similar. Analogical constraints in AM, for example, are limited to the lexemes that take part in some inflectional or derivational phenomenon, and the assumption is that the model does not generalize or analogize across phenomena (e.g. a model would not capture strong verb and strong noun inflection in German at the same time, but two independent models would each apply to each phenomenon).
+I will call this hypothesis \emph{Analogy as a type constraint} (\textsc{atc}). As far as I am aware, this is not an explicit assumption of any analogical classifier that has been proposed in the literature, but implicitly most models seem to make use of something similar. Analogical constraints in AM, for example, are limited to the lexemes that take part in some inflectional or derivational phenomenon, and the assumption is that the model does not generalize or analogize across phenomena (e.g. a model would not capture strong verb and strong noun inflection in German at the same time, but two independent models would each apply to each phenomenon).
 
 I propose that analogical classifiers do not operate on a multiple category basis. Instead, classifiers operate on a type by type basis. For each type, its classifier says what the phonology and semantics of the items that belong to that type must be like. This means that classifiers are not multinomial, but binomial. This is a new view of analogy. Usually, analogical classifiers are understood as systems which assign a category to an item based on their phonology and semantics. This is the effect we see. But, if we want to properly integrate analogy into the grammar, we need to decompose its classifiers into multiple binary classifiers\footnote{This is not too different from what multinomial regression models do. From a computational perspective, whether one trains the models as individual binary classifiers or as one big multinomial classifier makes no real difference. However, because directly training multinomial models is much simpler, I will take this route when implementing the analogical models.}. A toy example with the irregular English verb classes already mentioned can help illustrate this crucial point. The example in \figref{fig:exe-classifier-multinomial} shows how a multinomial classifier works: The classifier takes a word, and for the word it decides what class it belongs to.
 
@@ -229,18 +229,19 @@ There seems to be some degree of implicit (and sometimes more explicit) assumpti
 
 Analogical classifiers are not (or should not be) gradient or fuzzy. They should predict class membership categorically. However, this does not mean there is no room for gradience in the \textsc{atc} model. Gradience can be seen in usage especially when given two grammatical choices, speakers tend to prefer one over the other, or there are contextual cues which correlate with the alternatives. The degree to which one of the alternatives is preferred over the others is gradient because it does not consist of some categorical property but lies on a continuum. This kind of phenomenon has been studied extensively in corpus linguistics \autocites{Bresnan.2007, Bresnan.2008, Francis.2014, Hay.2006, Kapatsinski.2012}. The role of analogical classifiers here is to determine what the grammatical alternatives are, but speakers can have different preferences with regard to these. Of course, there are cases where speakers are unsure about new lexical items, or where different speakers do not agree on the classification of some wug. At least two different explanations could be behind these phenomena. One case arises if an analogical classifier finds all classes are inadequate for an item because the item does not fit into any class. If an item does not fit any of the possible classes well, it is natural that speakers will have trouble categorizing it. Another scenario causing uncertainty in categorization occurs when an item is assigned to two incompatible classes by the analogical model. If a new item matches two incompatible types (e.g. two different genders), there will be uncertainty about the class the item should belong to.
 
-A potential concern regarding binary analogical classifiers (i.e. classifiers which only return \textit{true} or \textit{false}) is that they could produce multiple class assignments. In a case with two types $\tau$ and $\sigma$, if the classifier that says which items are allowed to be $\tau$ cannot see what the classifier for $\sigma$ does, one could expect that there would be many cases of multiple assignments, since both classifiers could allow for some lexeme to belong to both $\tau$ and $\sigma$. This is not a problem. The fact that a classifier allows some item to belong to multiple classes does not actually mean that, in the grammar, the item will belong to multiple classes. Classifiers are not responsible for final class assignment, they simply say whether a lexeme could potentially belong to some type, not that it has to belong to that type. A word like \textit{nieve} (`snow') in Spanish could be either masculine or feminine from its phonological and semantic properties, but it is feminine for all speakers. The fact that analogical classifiers set up this way could produce multiple class assignments not found in the grammar is not a real issue. In other words, analogical classifiers do not say that lexemes with certain phonological and semantic properties must belong to some type $\tau$, but rather that all lexemes that belong to type $\tau$ must fulfill the aforementioned phonological and semantic properties.
+A potential concern regarding binary analogical classifiers (i.e. classifiers which only return \textit{true} or \textit{false}) is that they could produce multiple class assignments. In a case with two types $\tau$ and $\sigma$, if the classifier that says which items are allowed to be $\tau$ cannot see what the classifier for $\sigma$ does, one could expect that there would be many cases of multiple assignments, since both classifiers could allow for some lexeme to belong to both $\tau$ and $\sigma$. This is not a problem. The fact that a classifier allows some item to belong to multiple classes does not actually mean that, in the grammar, the item will belong to multiple classes. Classifiers are not responsible for final class assignment, they simply say whether a lexeme could potentially belong to some type, not that it has to belong to that type. A word like \textit{nieve} `snow' in Spanish could be either masculine or feminine from its phonological and semantic properties, but it is feminine for all speakers. The fact that analogical classifiers set up this way could produce multiple class assignments not found in the grammar is not a real issue. In other words, analogical classifiers do not say that lexemes with certain phonological and semantic properties must belong to some type $\tau$, but rather that all lexemes that belong to type $\tau$ must fulfill the aforementioned phonological and semantic properties.
 
 \subsection{Analogy runs through the hierarchy}
 
 That analogy runs through the hierarchy is the main claim of this book, and most of the case studies in Part II will focus on providing evidence for this claim. If analogical models are restricted by the inheritance hierarchy, and analogies themselves are constraints attached to specific types, then we would expect to see reflexes of the shape of the hierarchy in the analogical relations.
 
-Although previous work on analogical classifiers seems to make this assumption in some way, it has never been stated explicitly. Analogical models are always proposed and trained for distinguishing types in direct paradigmatic opposition. There are no analogical models that distinguish between intransitive verbs and feminine countable nouns. Models for predicting gender are assumed to \textbf{only} predict gender, models for distinguishing verb inflection classes are assumed to \textbf{only} predict verb inflection classes, etc. This is not because of a limitation of the statistical methods used, since neural networks and AM could be trained to do this. Analogical models are not trained to do this because, intuitively, it would make no sense. Constraining analogy to the hierarchy straightforwardly accounts for why this is the case.
+Although previous work on analogical classifiers seems to make this assumption in some way, it has never been stated explicitly. Analogical models are always proposed and trained for distinguishing types in direct paradigmatic opposition. There are no analogical models that distinguish between intransitive verbs and feminine countable nouns. Models for predicting gender are assumed to \emph{only} predict gender, models for distinguishing verb inflection classes are assumed to \emph{only} predict verb inflection classes, etc. This is not because of a limitation of the statistical methods used, since neural networks and AM could be trained to do this. Analogical models are not trained to do this because, intuitively, it would make no sense. Constraining analogy to the hierarchy straightforwardly accounts for why this is the case.
 
 This account has one direct consequence. If we accept that analogical models help to predict types in the hierarchy, there is no reason to think that analogical models can only predict the most specific types. Suppose an analogical model could discriminate between the four leaves (\textit{X}, \textit{Y}, \textit{Z}, \textit{W}) in \figref{fig:fake-exe-hierar}.
 
 \begin{figure}
-    \caption{Basic hierarchy example}\label{fig:fake-exe-hierar} \begin{forest}baseline
+    \caption{Basic hierarchy example}\label{fig:fake-exe-hierar} 
+    \begin{forest}baseline, for tree={parent anchor=south, child anchor=north}
         [\textit{class} [$\tau$ [\textit{X}] [\textit{Y}]] [$\sigma$ [\textit{Z}] [\textit{W}]]]
     \end{forest}
 \end{figure}
@@ -323,7 +324,7 @@ This can be easily extended to multiple inheritance:
     \ex if constraints $c_1$ and $c_2$ hold of types $\tau_1$ and $\tau_2$, respectively, and $\sigma$ is a sub-type of both $\tau_1$ and $\tau_2$, then constraints $c_1$ and $c_2$ also hold for $\sigma$.
 \end{exe}
 
-To model special cases and exceptions, we only have to add the full phonological specification of said exception. If, in a toy language, $\tau$ allows words starting with a dental or the stem \textit{paner}, it would specify the constraints: \textit{/\#t/ $\lor$ /\#d/ $\lor$ /\#paner\#/}. This straightforwardly accounts for productivity issues. New items of type $\tau$ can only start with \textit{t} or \textit{d}, but there is the exception \textit{paner}. We find such an instance in the German gender system, where nouns ending in \textit{/aj/} are feminine. A few exceptions are words like \textit{Ei} (/aj/, `egg'), or \textit{Blei} (/blaj/, `lead'). This means that neuter would specify [\textsc{phon} \textit{(\dots  $\lor$ /\#aj\#/ $\lor$ /\#blaj\#/ $\lor$ \dots) $\land$ $\lnot$/.aj\#/}] (where the `.' stands for any phoneme), including the exceptions to the \textit{/aj/} pattern.\footnote{It is worth noting here that the \textit{/aj/} string is not always part of the lexeme but it can be a gender assigning suffix.}$^{,}$\footnote{Notice that listing /\#aj\#/ and /\#blaj\#/ in the set of possible phonological shapes for neuter nouns does not ensure on its own that there will be two neuter nouns with phonology /\#aj\#/ and /\#blaj\#/, it only means that these are possible shapes neuter nouns can take.} And, similarly, from a semantic perspective, in German all alcoholic drinks take the masculine gender except for \textit{Bier} (`beer'), which is neuter.
+To model special cases and exceptions, we only have to add the full phonological specification of said exception. If, in a toy language, $\tau$ allows words starting with a dental or the stem \textit{paner}, it would specify the constraints: \textit{/\#t/ $\lor$ /\#d/ $\lor$ /\#paner\#/}. This straightforwardly accounts for productivity issues. New items of type $\tau$ can only start with \textit{t} or \textit{d}, but there is the exception \textit{paner}. We find such an instance in the German gender system, where nouns ending in \textit{/aj/} are feminine. A few exceptions are words like \textit{Ei} (/aj/, `egg'), or \textit{Blei} (/blaj/, `lead'). This means that neuter would specify [\textsc{phon} \textit{(\dots  $\lor$ /\#aj\#/ $\lor$ /\#blaj\#/ $\lor$ \dots) $\land$ $\lnot$/.aj\#/}] (where the `.' stands for any phoneme), including the exceptions to the \textit{/aj/} pattern.\footnote{It is worth noting here that the \textit{/aj/} string is not always part of the lexeme but it can be a gender assigning suffix.}$^{,}$\footnote{Notice that listing /\#aj\#/ and /\#blaj\#/ in the set of possible phonological shapes for neuter nouns does not ensure on its own that there will be two neuter nouns with phonology /\#aj\#/ and /\#blaj\#/, it only means that these are possible shapes neuter nouns can take.} And, similarly, from a semantic perspective, in German all alcoholic drinks take the masculine gender except for \textit{Bier} `beer', which is neuter.
 
 A different kind of special case is that of \textit{default} types. Default types, with regard to analogy (which may or may not overlap with morphological defaults), are types where remaining cases land. This situation occurs where a series of types have strict analogical constraints, and one type which allows for every item which does not fit well into any of the other types. However, a default type situation is only a particular distribution of analogical constraints and not something especially coded into the system. This can be illustrated with some toy examples. Suppose there are two types in competition: $\sigma$ [\textsc{phon} \textit{/\#C/}] and $\tau$ [\textsc{phon} \textit{/\#V/}]. In such a case it makes no sense to talk about a default distribution because the analogical constraints are complementary and (depending on the phonotactics of the system) do not say anything about which of the two types will likely have more items. Now suppose that the types in competition are: $\sigma$ [\textsc{phon} \textit{/\#k/}] and $\tau$ [\textsc{phon} \textit{/\#C/}]. In such a case $\sigma$ can only accept items which begin with /k/, while $\tau$ can accept any item which begins with a consonant (including /k/). We can say then that $\tau$ is an overlapping default that accepts every item, including items which could belong to $\sigma$. Finally, suppose now that the constraints across both types are as follows: $\sigma$ [\textsc{phon} \textit{/\#k/}] and $\tau$ [\textsc{phon} \textit{/\#C/} $\land$ $\lnot$ \textit{/\#k/}]. In this case, $\tau$ is a non-overlapping default that only accepts remaining items that do not belong to $\sigma$. These are only the three basic cases, and complex combinations of these three cases may be at work within a system. For example, in a case with three types $\tau$, $\sigma$ and $\gamma$, $\tau$ may be a non-overlapping default with respect to $\sigma$, and at the same time $\tau$ may be an overlapping default with respect to $\gamma$.\footnote{This follows if, e.g.: $\tau$ [\textsc{phon} \textit{/\#C/} $\land$ $\lnot$ \textit{/\#k/}], $\sigma$ [\textsc{phon} \textit{/\#k/}], and $\gamma$ [\textsc{phon} \textit{/\#t/}]}
 
@@ -335,7 +336,7 @@ With the model in place, we can calculate the predictions of different hierarchy
 
 \begin{figure}
     \caption{Simple inheritance hierarchy} \label{fig:formal-exe-tree}
-    \begin{forest} baseline
+    \begin{forest} baseline, for tree={parent anchor=south, child anchor=north}
         [$\tau$ [$\sigma$ [$\gamma_1$] [$\gamma_2$]] [\textit{non}-$\sigma$ [$\pi_1$] [$\pi_2$]]]
     \end{forest}
 \end{figure}
@@ -355,12 +356,12 @@ In a case of multiple inheritance as in \figref{fig:formal-exe-tree-2}, we expec
         \node (s) at (-2,-2){$\sigma$};
         \node (ts) at (0,-2){$\gamma$};
         \node (t) at (2,-2){$\tau$};
-        \draw (a) -- (S);
-        \draw (a) -- (T);
-        \draw (S) -- (s);
-        \draw (S) -- (ts);
-        \draw (T) -- (t);
-        \draw (T) -- (ts);
+        \draw (a.south) -- (S.north);
+        \draw (a.south) -- (T.north);
+        \draw (S.south) -- (s.north);
+        \draw (S.south) -- (ts.north);
+        \draw (T.south) -- (t.north);
+        \draw (T.south) -- (ts.north);
     \end{tikzpicture}
 \end{figure}
 
@@ -370,7 +371,7 @@ A final advantage of this model is that it is \textit{learnable} and thus compat
 
 \begin{figure}
     \caption{Complete hierarchy example} \label{fig:exe-learnable}\scriptsize
-    \begin{forest} baseline, qtree,
+    \begin{forest} baseline, qtree
         [$\Tau$
         [$\Alpha$ \\{[\textsc{phon} \textit{/V\#/}]}
         [$\iota$ \\ {[\textsc{phon} \textit{/i\#/}]} \\ \textit{kani} \\ \textit{li}]

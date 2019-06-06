@@ -31,9 +31,8 @@ Importantly, not all nouns can alternate between the two markers:
 
 
 A rule of thumb for class assignment has been proposed in the literature already: ``nouns ending in a palatal phoneme use \textit{-em}, whereas all other nouns use \textit{-om}. However, although this rule seems reasonably straightforward, there are some environments where doublets occur'' \autocite[377]{Lecic.2015}. Diachronically, this overabundance \autocites{Thornton.2011, Thornton.2010a}, emerged due to the collapse of an older palatal \textit{/r$^j$/}, which justified the use of \textit{-em}, with a modern non-palatal \textit{/r/} which justifies the use of \textit{-om} \autocite{Lecic.2015}. \textcite{Mladenovic.1977} (as cited by \citealt{Lecic.2015}) claims that \textit{-om} is spreading to contexts where \textit{-em} would be historically used.
-%\textcite{Lecic.2015}, regarding some triggers that have been suggested previously (no references are given) for the preference of one or the other in a given syntactic context seem to not be born out in the corpus he studied.
 
-Some modern grammars give extremely general descriptions of this alternation: ``the masculine-neuter ending -om appears as -em after `soft' consonants'' \autocite[85]{Alexander.2006}.\footnote{The soft consonants in Croatian are: \textit{č, š, ž, ć, đ, dž, nj, lj, j, c}.} Similarly, other grammars seem to suggest that the alternation is purely phonological: ``Stems ending in a palatal cause vowel alternation in the instrumental singular ending, e.g. \textit{učenik\textbf{o}m} `pupil' - prijateljem `friend'\dots'' \autocite[12]{Kordic.1997}. Yet other works argue that the distinction between \textit{-em} and \textit{-om} is completely predictable from whether the noun ends in a hard (\textit{-om}) or soft consonant (\textit{-em}) \autocite[146]{Hammond.2005}. Additional phonological environments of this alternation have been noted already:
+Some modern grammars give extremely general descriptions of this alternation: ``the masculine-neuter ending -om appears as -em after `soft' consonants'' \autocite[85]{Alexander.2006}.\footnote{The soft consonants in Croatian are: \textit{č, š, ž, ć, đ, dž, nj, lj, j, c}.} Similarly, other grammars seem to suggest that the alternation is purely phonological: ``Stems ending in a palatal cause vowel alternation in the instrumental singular ending, e.g. \textit{učenik\emph{o}m} `pupil' - prijateljem `friend'\dots'' \autocite[12]{Kordic.1997}. Yet other works argue that the distinction between \textit{-em} and \textit{-om} is completely predictable from whether the noun ends in a hard (\textit{-om}) or soft consonant (\textit{-em}) \autocite[146]{Hammond.2005}. Additional phonological environments of this alternation have been noted already:
 
 \begin{quotation}
 Instrumental -ет / -ем is normal with stems in -c, where vocative has -e/-e and the first-palatalization alternation, as ótac/отац 'father', vocative осе/оче. -от/-ом tends to be kept in foreign words and names (Kíš-от/Кйш-ом) and in words with e in the preceding syllable: padež-от/падеж-ом 'case'. \autocite[320]{Brown.1993}
@@ -55,11 +54,13 @@ One approach how to model overabundance with type hierarchies can be achieved by
           child anchor=north,
           align=center,
           inner sep=1pt,
+          node font=\itshape
         }
         [sg.ins
-        [om, name=EM [excl-em [muž\\`man'] [kazalište\\`theater']]
-        [em$\sim$om, name=EMOM [princ\\`prince'] [car\\`emperor']]]
-        [em , name=OM [, no edge] [, no edge] [excl-om[kej\\`river bank'] [konobar\\`waiter']]]
+        [om, name=EM [excl-em [muž\\\emph{`man'}] [kazalište\\\emph{`theater'}]]
+        [em$\sim$om, name=EMOM [princ\\\emph{`prince'}] [car\\\emph{`emperor'}]]]
+        [em , name=OM [, no edge] [, no edge] [excl-om[kej\\\emph{`river bank'}] 
+        [konobar\\\emph{`waiter'}]]]
         ]
         \draw (EMOM.north) -- (OM.south);
     \end{forest}
@@ -98,9 +99,9 @@ The model is rather simple for this case. The predictors are the last two segmen
     \multicolumn{4}{c}{Reference}                           \\
     \midrule
     Prediction & em           & em$\sim$om   & om           \\
-    em         & 1887         & \textbf{445} & \textbf{25}  \\
-    em$\sim$om & \textbf{147} & 502          & \textbf{188} \\
-    om         & \textbf{22}  & \textbf{346} & 2925         \\
+    em         & 1887         & \emph{445} & \emph{25}  \\
+    em$\sim$om & \emph{147} & 502          & \emph{188} \\
+    om         & \emph{22}  & \emph{346} & 2925         \\
     \lspbottomrule
   \end{tabular}
   \caption{Confusion Matrix for the model predicting instrumental singular in Croatian nouns}\label{tab:ins-cro}
@@ -170,27 +171,27 @@ In the masculine subset: \textit{–ik}, \textit{–ok}, \textit{–chik}, we fi
 \begin{exe}
     \ex \label{ikchikok-single}
     \begin{xlist}
-        \ex -ik, *-chik, *-ok: stol, kot, miač (`table', `cat', `ball')
-        \ex *-ik, -chik, *-ok: zabor (`fence')
-        \ex *-ik, *-chik, -ok: molot, vjechjer (`hammer', `vening')
+        \ex -ik, *-chik, *-ok: stol `table', kot `cat', miač `ball'
+        \ex *-ik, -chik, *-ok: zabor `fence'
+        \ex *-ik, *-chik, -ok: molot `hammer', vjechjer `vening'
     \end{xlist}
 \end{exe}
 
 \begin{exe}
     \ex \label{ikchikok-multiple}
     \begin{xlist}
-        \ex -ik, -chik, *-ok: stul, shkaf (`chair', `cabinet')
-        \ex *-ik, -chik, -ok: rukav (`sleeve')
-        \ex -ik, *-chik, -ok: rot, list, chas (`mouth', `leaf', `hour')
+        \ex -ik, -chik, *-ok: stul `chair', shkaf `cabinet'
+        \ex *-ik, -chik, -ok: rukav `sleeve'
+        \ex -ik, *-chik, -ok: rot `mouth', list  `leaf', chas `hour'
         \ex -ik, -chik, -ok: ?
     \end{xlist}
 \end{exe}
 
-A similar situation can be found in German, where there is competition between the diminutive forms \textit{-chen} and \textit{-lein}, with some degree of overlap between the two: \textit{Häuschen}$\sim$\textit{Häuslein} (`small house'). Similarly, Spanish has the forms \textit{-illo}, \textit{-ito}, \textit{-cito}, \textit{-ico}, among others, and some overlap between these forms in a substantial set of nouns: \textit{casita} (`small house'), \textit{pollito} (`chick), \textit{gatito}$\sim$\textit{gatico} (`kitten').
+A similar situation can be found in German, where there is competition between the diminutive forms \textit{-chen} and \textit{-lein}, with some degree of overlap between the two: \textit{Häuschen}$\sim$\textit{Häuslein} `small house'. Similarly, Spanish has the forms \textit{-illo}, \textit{-ito}, \textit{-cito}, \textit{-ico}, among others, and some overlap between these forms in a substantial set of nouns: \textit{casita} `small house', \textit{pollito} `chick', \textit{gatito}$\sim$\textit{gatico} `kitten'.
 
-For Russian, there seems to be no rule-based account of which nouns can take which markers \autocite{Gouskova.2015}. Some research on Russian diminutives has focused on the relation between the different forms and gender, as well as gender acquisition \autocites{Kempe.2010, Protassova.2007, Voeykova.1998}, but relatively little attention has been given to the actual conditions that help decide between the different forms. \textcite{Gouskova.2015} is the most recent approach to this problem. The authors propose what they label sublexical phonotactics, a model that is very similar to an analogical model. The basic idea is that each form a speaker encounters is stored in a sublexicon specific to that form, i.e. \textit{-ik} forms are stored in an \textit{ik} sublexicon, \textit{-chik} forms are stored in an \textit{chik} sublexicon and so on. Speakers find phonotactic regularities in each sublexicon, and new items are coined based on those regularities. Conceptually, there are only a few minor differences between traditional analogical models and \textcite{Gouskova.2015}'s, but in terms of implementation some issues with the latter exist. From a theoretical perspective, \textcite{Gouskova.2015} propose a flat model, where speakers simply have lists for each type, and there is no structuring of said types. This is quite common in analogical approaches. %The real issue is that the implementation the authors propose does not actually work.
+For Russian, there seems to be no rule-based account of which nouns can take which markers \autocite{Gouskova.2015}. Some research on Russian diminutives has focused on the relation between the different forms and gender, as well as gender acquisition \autocites{Kempe.2010, Protassova.2007, Voeykova.1998}, but relatively little attention has been given to the actual conditions that help decide between the different forms. \textcite{Gouskova.2015} is the most recent approach to this problem. The authors propose what they label sublexical phonotactics, a model that is very similar to an analogical model. The basic idea is that each form a speaker encounters is stored in a sublexicon specific to that form, i.e. \textit{-ik} forms are stored in an \textit{ik} sublexicon, \textit{-chik} forms are stored in an \textit{chik} sublexicon and so on. Speakers find phonotactic regularities in each sublexicon, and new items are coined based on those regularities. Conceptually, there are only a few minor differences between traditional analogical models and \citegen{Gouskova.2015}, but in terms of implementation some issues with the latter exist. From a theoretical perspective, \textcite{Gouskova.2015} propose a flat model, where speakers simply have lists for each type, and there is no structuring of said types. This is quite common in analogical approaches. %The real issue is that the implementation the authors propose does not actually work.
 
-Because the issues with \textcite{Gouskova.2015}'s approach are of secondary concern, I will only discuss them briefly. The essence of their implementation is as follows. Using the UCLA phonotactis learner \autocite{Hayes.2008}, a first instance of their model infers phonotactic regularities in a dataset of Russian nouns marked for their diminutive preference (the phonotactic regularities are inferred from the bases of the nouns). In a second instance, a mixed effects model is trained on the phonotactic generalizations to determine which are statistically significant.
+Because the issues with \citegen{Gouskova.2015} approach are of secondary concern, I will only discuss them briefly. The essence of their implementation is as follows. Using the UCLA phonotactis learner \autocite{Hayes.2008}, a first instance of their model infers phonotactic regularities in a dataset of Russian nouns marked for their diminutive preference (the phonotactic regularities are inferred from the bases of the nouns). In a second instance, a mixed effects model is trained on the phonotactic generalizations to determine which are statistically significant.
 
 \largerpage[-1]
 There are several problems with this method. Of some real concern is that there is no cross-validation. Their results stem from testing the model on the same dataset it was trained on; however, this could be solved. It is also somewhat unclear what the purpose of the mixed effect model is, because the UCLA learner is already predicting classes based on the phonotactic patterns. Finding statistically significant patterns is problematic because these patterns are highly correlated with each other (because of phonotactics), and mixed effects models are not robust against co-linearity, which means any statistical significance is in question.\footnote{I could not reproduce their results in order to check because the versions of the statistical software used by the authors are no longer supported.}
@@ -209,7 +210,7 @@ The results in \tabref{tab:test-gkn-model} can be obtained by looking at the pre
     ok        & 122  & 56 & 75                \\
     \lspbottomrule
   \end{tabular}
-  \caption{Actual results for \textcite{Gouskova.2015}'s model}\label{tab:test-gkn-model}
+  \caption{Actual results for \citegen{Gouskova.2015} model}\label{tab:test-gkn-model}
 \end{table}
 
 \begin{table}
@@ -229,7 +230,7 @@ The results in \tabref{tab:test-gkn-model} can be obtained by looking at the pre
 
 In one of the tests, the authors try to evaluate their model on a wug experiment with Russian speakers. They designed 300 nonce words and asked speakers to produce the corresponding diminutives. The authors claim high correlation between their model and speaker choices but it is not clear how this correlation was measured. First, their evaluation is made by using Kendall's and Spearman's correlation coefficients, which would lead to believe that they are testing predicted proportions vs produced, but this is not made clear. In the code the correlation calculations are made on categorical variables, which is not advisable and makes the results hard to interpret.
 
-Despite these potential issues, the basic idea that the affix competition in Russian diminutives is resolved analogically is on the right track. In the end, it is not of too much interest whether the phonotactics approach could outperform the neural networks I employ here, or the other way around. The important question that is left to be addressed is whether a flat list approach like that of \textcite{Gouskova.2015}'s is more appropriate than a structured model.
+Despite these potential issues, the basic idea that the affix competition in Russian diminutives is resolved analogically is on the right track. In the end, it is not of too much interest whether the phonotactics approach could outperform the neural networks I employ here, or the other way around. The important question that is left to be addressed is whether a flat list approach like that of \citegen{Gouskova.2015} is more appropriate than a structured model.
 
 \subsection{Modelling the system}
 
@@ -239,7 +240,7 @@ The hierarchy in \figref{fig:hierarchy-russ} shows an simple sketch of how the s
 
 \begin{figure}
     \caption{Hybridization in Russian nouns} \label{fig:hierarchy-russ}
-    \begin{forest} baseline, %qtree edges, 
+    \begin{forest} baseline, qtree, node font=\itshape, 
     l sep+=2em, for children={
           l sep+=2em,
         }
@@ -247,9 +248,9 @@ The hierarchy in \figref{fig:hierarchy-russ} shows an simple sketch of how the s
         [\dots]
         [,no edge]
         [,no edge]
-        [IK, name=IK [\textit{ik}] [{\textit{ik$\sim$chik}}, name=IKCHIK]]
-        [CHIK , name=CHIK [\textit{chik}] [\textcolor{gray}{\textit{ik$\sim$chik$\sim$ok}}, edge=densely dotted, name=IKCHIKOK]]
-        [OK, name=OK [\textit{ok}] [\textit{ik$\sim$ok}, name=IKOK] [\textit{chik$\sim$ok}, name=CHIKOK]]
+        [\textit{IK}, name=IK [\textit{ik}] [{\textit{ik$\sim$chik}}, name=IKCHIK]]
+        [\textit{CHIK} , name=CHIK [\textit{chik}] [\textcolor{gray}{\textit{ik$\sim$chik$\sim$ok}}, edge=densely dotted, name=IKCHIKOK]]
+        [\textit{OK}, name=OK [\textit{ok}] [\textit{ik$\sim$ok}, name=IKOK] [\textit{chik$\sim$ok}, name=CHIKOK]]
         [,no edge]
         [,no edge]
         [\dots]]
