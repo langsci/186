@@ -1,6 +1,6 @@
 \chapter{Hybrid classes}\label{chap:hybrid}
 
-\is{inflection class!hybrid}
+\is{inflection!class!hybrid}
 This short chapter explores the situations where morphology allows for two different, competing strategies to be applied to the same lexeme. In inflection, this is called \isi{overabundance}, while in derivation the phenomenon is called derivational \isi{doublet}s. These systems can be modelled using hybrid classes, like the ones introduced in Chapter \ref{chap:solution}. As for the test cases, I look at Russian diminutives (derivational doublets) and Croatian instrumental singular markers (overabundance). The interesting aspect of these two cases is that there is partial overlap between class membership, which contrasts with the previous gender and inflection class cases, where a \isi{stem} or word can only belong to one inflection class at a time. In cases of affix competition and overabundance, a single lexeme can belong to two different classes at the same time, and giving speakers a choice between two formally different, but semantically identical, markers. This produces hierarchies with a different shape, which has a clear effect on the analogical relations.
 
 \section{Overabundant inflection: Croatian singular instrumental}
@@ -98,6 +98,7 @@ I take the \isi{stem} of the nouns to be the instrumental \isi{singular} minus t
 
 \largerpage[2]
 The model is rather simple for this case. The predictors are the last two segments and the number of consonant clusters in the noun: \texttt{class $\sim$ final.1 + final.2 + n\_cluster}\footnote{This model had one hidden layer with 5 nodes and a decay rate of 0.01.}. The results of the model can be seen in \tabref{tab:ins-cro} and the corresponding statistics in \tabref{tab:ins-cro-stats}.
+\is{confusion matrix}
 
 \begin{table}
   \centering
@@ -204,6 +205,7 @@ Because the issues with \citegen{Gouskova.2015} approach are of secondary concer
 There are several problems with this method. Of some real concern is that there is no cross-validation. Their results stem from testing the model on the same dataset it was trained on; however, this could be solved. It is also somewhat unclear what the purpose of the mixed effect model is, because the UCLA learner is already predicting classes based on the phonotactic patterns. Finding statistically significant patterns is problematic because these patterns are highly correlated with each other (because of phonotactics), and mixed effects models are not robust against co-linearity, which means any statistical significance is in question.\footnote{I could not reproduce their results in order to check because the versions of the statistical software used by the authors are no longer supported.}
 
 The results in \tabref{tab:test-gkn-model} can be obtained by looking at the predictions made by the UCLA learner\footnote{The original dataset and code used by \textcite{Gouskova.2015} were kindly provided to me by the lead author. I use the results from their code.} vs observed diminutives in the dataset. The corresponding statistics are in \tabref{tab:test-gkn-stats}. It is clear that the UCLA model is not learning to properly discriminate the diminutive classes, and the model performs at chance level.
+\is{confusion matrix}
 
 \begin{table}
   \centering

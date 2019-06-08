@@ -2,8 +2,9 @@
 
 \is{gender|(}
 \is{inflection!nominal|(}
+\is{inflection!class}
 
-In this chapter, I discuss two cases of gender assignment and \isi{inflection class} interaction: Latin third declension nouns and Romanian nouns. The question of gender assignment is an old one, and there are many papers proposing analogical models to account for this phenomenon in different languages. Some early work on the matter concluded that ``there seems to be no practical criterion by which the gender of a noun in German, French or Latin [can] be determined'' \autocite[280]{Bloomfield.1933a}. But since Bloomfield, there has been great progress towards establishing the opposite conclusion: ``French  grammarians  have  been  hasty  in  their  conclusion  that there are no regularities or only minimal ones to gender determination'' \autocite[316]{Tucker.1968}, and ``gender can be predicted for a large proportion of German nouns, and that there is a complex interplay of overlapping semantic, morphological and phonological factors'' \autocite[49]{Corbett.1991}.
+In this chapter, I discuss two cases of gender assignment and inflection class interaction: Latin third declension nouns and Romanian nouns. The question of gender assignment is an old one, and there are many papers proposing analogical models to account for this phenomenon in different languages. Some early work on the matter concluded that ``there seems to be no practical criterion by which the gender of a noun in German, French or Latin [can] be determined'' \autocite[280]{Bloomfield.1933a}. But since Bloomfield, there has been great progress towards establishing the opposite conclusion: ``French  grammarians  have  been  hasty  in  their  conclusion  that there are no regularities or only minimal ones to gender determination'' \autocite[316]{Tucker.1968}, and ``gender can be predicted for a large proportion of German nouns, and that there is a complex interplay of overlapping semantic, morphological and phonological factors'' \autocite[49]{Corbett.1991}.
 
 \textcite{Corbett.1991}, for example, reports on a series of languages where he notes that the shape of nouns is a strong predictor of their inflectional class and gender:
 
@@ -18,7 +19,7 @@ Similarly, for German, there is a vast amount of background on how speakers pred
 
 These studies have mostly focused on the properties of the system but others have also explored the cognitive underpinnings of gender assignment, and how analogical systems are actually responsible for how gender is assigned to new nouns \autocites{Holmes.2004, Caffarra.2015, Caffarra.2015a, Taylor.2012}.
 
-A key point worth emphasizing is the difference between gender and \isi{inflection class}. Gender relates to agreement, inflection class is about the actual markers. The need to differentiate between both has been made explicit before \autocite{Aronoff.1994, Harris.1991} but it is not always made explicit. Although there is often correlation between gender and inflection class in nouns and adjectives, as the examples of this chapter will show, this correlation is only partial.
+A key point worth emphasizing is the difference between gender and inflection class. Gender relates to agreement, inflection class is about the actual markers. The need to differentiate between both has been made explicit before \autocite{Aronoff.1994, Harris.1991} but it is not always made explicit. Although there is often correlation between gender and inflection class in nouns and adjectives, as the examples of this chapter will show, this correlation is only partial.
 
 In the following two sections, I explore two languages which have received less attention from an analogical perspective: Latin and Romanian. These two showcases were chosen due to the shapes of their systems. In Latin, we have a very tree-like hierarchy, which allows us to explore what happens in simple configurations with few classes. The Romanian gender-inflection class interaction offers a more complex case, in which there are multiple proposals regarding the correct number of genders found in Romanian, and how they relate to inflection class.
 
@@ -140,7 +141,7 @@ We fit an analogical model to the Latin data using the formula: \texttt{gender $
 \end{table}
 
 \is{hierarchical clustering}
-The equivalent model for the reduced dataset can be seen in \tabref{tab:gender-lat-2} and the corresponding statistics in \tabref{tab:gender-lat-stats-2}. For both datasets, the results are almost identical. As expected, the smaller dataset produces slightly worse results, because the nouns removed were amongst the easily predicted ones\footnote{Because the derivational suffixes are identified by the model as sequences that reliably predict gender.}. A clustering analysis of both models can be seen side-by-side in \tabref{fig:clustering-latin}.
+The equivalent model for the reduced dataset can be seen in \tabref{tab:gender-lat-2} and the corresponding statistics in \tabref{tab:gender-lat-stats-2}. For both datasets, the results are almost identical. As expected, the smaller dataset produces slightly worse results, because the nouns removed were amongst the easily predicted ones\footnote{Because the derivational suffixes are identified by the model as sequences that reliably predict gender.}. A clustering analysis of both models can be seen side-by-side in \tabref{fig:clustering-latin}.\is{confusion matrix}
 
 \begin{table}[t]
   \centering
@@ -380,7 +381,7 @@ A different approach is pursued by \textcite{Steriade.2008}. \citeauthor{Steriad
 
 The two gender model as presented by \textcite{Bateman.2010} has a conceptual problem. There are three types of nouns in Romanian based on their agreement behaviour. The discussion of how this originates and what features are responsible for this phenomenon is somewhat of a red herring. The fact is that we have three agreement patterns, and whether we need a lexically specified feature for this is a different question. Additionally, the argument that we do not need gender because inflection class is predictable from formal features, and because gender does not completely determine inflectional class, is not very convincing.
 
-It is not really surprising that declension class is partially independent of gender, since this is not all that rare typologically speaking (\cite{Corbett.1991}, and Chapter \ref{chap:complex}), and it is even present in other Romance languages. A simple example is Spanish, where exponents of the singular only partially correlate with gender \autocite{Harris.1991}. Similarly, the fact that gender does not completely determine \isi{inflection class} does not entail that gender has no information about the inflection class of a noun, independently of other formal features on the noun. Incomplete information does not mean no information.
+It is not really surprising that declension class is partially independent of gender, since this is not all that rare typologically speaking (\cite{Corbett.1991}, and Chapter \ref{chap:complex}), and it is even present in other Romance languages. A simple example is Spanish, where exponents of the singular only partially correlate with gender \autocite{Harris.1991}. Similarly, the fact that gender does not completely determine inflection class does not entail that gender has no information about the inflection class of a noun, independently of other formal features on the noun. Incomplete information does not mean no information.
 
 As for the Romanian system, what does make sense in the two-gender proposed by \textcite{Bateman.2010}, is to have four agreement classes, two for singular and two for plural, and many different actual inflection classes according to the singular-plural marker combination. This idea is depicted in the hierarchy \tabref{fig:romanian-hierar}.
 
@@ -440,7 +441,8 @@ This hierarchy is exclusively about agreement because it indicates what the agre
 
 The adjective \textit{mic} `small' has three forms: \textit{mic} (masculine and neuter singular), \textit{mică} (feminine singular) and \textit{mici} (plural). This adjective does not agree with the number markers on the nouns, but with their gender.
 
-Because, as we saw, gender does not completely determine \isi{inflection class}, this dimension needs to be modelled separately. For each gender, there are some markers, either singular or plural, which are unique to said gender. So, for example, the plural maker \textit{-iuri} is only found with neuter nouns, the singular marker \textit{-C+ie} only occurs with feminine nouns, and the plural marker \textit{-C+i} is only found with masculine nouns. This is crucial because we cannot claim that masculine and neuter nouns share all singular markers, or that feminine and neuter nouns share all plural markers. Markers like \textit{-ă} are found in the singular with feminine and masculine nouns, and in the plural with neuter nouns. Except for the classes where both the singular and plural use the same marker, markers are uniquely determined by the number they express. That is, even though the marker \textit{-ă} can express singular or plural, knowing the gender of the noun immediately resolves the uncertainty. In the case of \textit{-e} in feminine nouns, we need to know the other marker of the noun to be able to tell whether \textit{-e} is a plural or singular marker.
+\is{inflection!class}
+Because, as we saw, gender does not completely determine inflection class, this dimension needs to be modelled separately. For each gender, there are some markers, either singular or plural, which are unique to said gender. So, for example, the plural maker \textit{-iuri} is only found with neuter nouns, the singular marker \textit{-C+ie} only occurs with feminine nouns, and the plural marker \textit{-C+i} is only found with masculine nouns. This is crucial because we cannot claim that masculine and neuter nouns share all singular markers, or that feminine and neuter nouns share all plural markers. Markers like \textit{-ă} are found in the singular with feminine and masculine nouns, and in the plural with neuter nouns. Except for the classes where both the singular and plural use the same marker, markers are uniquely determined by the number they express. That is, even though the marker \textit{-ă} can express singular or plural, knowing the gender of the noun immediately resolves the uncertainty. In the case of \textit{-e} in feminine nouns, we need to know the other marker of the noun to be able to tell whether \textit{-e} is a plural or singular marker.
 
 
 \begin{table}[p]
@@ -645,7 +647,7 @@ An alternative is to have an asymmetric hierarchy, but fewer individual markers.
 The final inflection classes result from specifying pairings between the \isi{singular} and plural markers shown in \tabref{tab:romanian-plural-clases}. Since there is no free combination between singular and plural markers, each class must be specified directly.
 
 \largerpage 
-The third alternative consists of two independent flat lists for \isi{singular} and plural markers and then specify each \isi{inflection class} as in \tabref{fig:romanian-hierar-markers-2}. A simplified hiearchy for this approach is given in \tabref{fig:romanian-hierar-markers-3}. The advantage of this model is that it is simpler than the previous two, in that it requires less complex interactions between types. The downside is that the partial correlations between gender and inflection class would be lost.
+The third alternative consists of two independent flat lists for \isi{singular} and plural markers and then specify each inflection class as in \tabref{fig:romanian-hierar-markers-2}. A simplified hiearchy for this approach is given in \tabref{fig:romanian-hierar-markers-3}. The advantage of this model is that it is simpler than the previous two, in that it requires less complex interactions between types. The downside is that the partial correlations between gender and inflection class would be lost.
 
 \begin{figure}
     \caption{Simplified Romanian marker hierarchy} \label{fig:romanian-hierar-markers-3}
@@ -699,7 +701,7 @@ The distribution of nouns by gender in the extracted corpus is, for a total of 6
 
 \subsubsection{Methodology and hypothesis}
 
-There are basically two claims at stake. On the one hand, it has been argued that gender information is not helpful when figuring out the plural form of nouns in Romanian. On the other hand, we want to test which of the three \isi{inflection class} configurations makes more accurate predictions regarding the analogical relations between the \isi{stem}s of the nouns.
+There are basically two claims at stake. On the one hand, it has been argued that gender information is not helpful when figuring out the plural form of nouns in Romanian. On the other hand, we want to test which of the three inflection class configurations makes more accurate predictions regarding the analogical relations between the \isi{stem}s of the nouns.
 
 To test the first claim, we can fit two different analogical models: (i) one that only looks at phonological information, which would approximate proposals for gender assignment based on the ending of nouns in Romanian like those of \textcite{Vrabie.1989} and \textcite{Vrabie.2000}; (ii) and then a similar model that also looks at gender information. If gender carries no useful information about the plural form of nouns in Romanian, as \textcite{Bateman.2010} claim, then we should see no difference in the performance of each of the models. If adding gender clearly increases accuracy, we can say that there is a high probability that gender does in fact play a role in predicting inflection class\footnote{We cannot have complete certainty because it is always possible that a different model solely based on formal cues could outperform the model including gender.}.
 
@@ -718,6 +720,7 @@ The basic prediction is that neuter classes should be confused with feminine and
 \subsubsection{Predicting gender}
 
 First, we predict gender from the shape of the \isi{stem}s with the formula: \texttt{gender $\sim$ final.1 + final.2 + final.3 + n\_vowels}.\footnote{There were no hidden nodes and a decay rate of 0.} Here we are simply looking at the final three segments and the number of vowels in the stem. The results can be seen in \tabref{tab:gender-romanian} and \tabref{tab:gender-romanian-stats}. The tables show that gender is in fact predictable without any information about number markers. However, in \tabref{tab:gender-romanian} we do see that there is a relatively large confusion between masculine and neuter, and between neuter and feminine, but not so much between feminine and masculine. This is again confirmed in \tabref{tab:gender-romanian-distance} (larger numbers mean more distance between the classes). This observation matches the hierarchy in \tabref{fig:romanian-hierar}, where feminine and masculine genders do not share any set of common nodes, but masculine and neuter, and feminine and neuter do.
+\is{confusion matrix}
 
 \begin{table}
   \centering
@@ -773,7 +776,8 @@ First, we predict gender from the shape of the \isi{stem}s with the formula: \te
 
 \subsubsection{Predicting singular}
 
-Next, we turn to the number markers. In this case, we have several dimensions that need to be predicted. On the one hand, there are individual number markers, and on the other hand there are complete \isi{inflection class}es with and without gender distinctions. Because there are some inflection classes which can appear with two genders, it is interesting to ask how well we can distinguish these cases.  Additionally, because we are mostly interested in seeing how the clusters work, we can compare whether predicting inflection class without gender produces similar clusters to those we get when predicting inflection class with gender.
+Next, we turn to the number markers. In this case, we have several dimensions that need to be predicted. On the one hand, there are individual number markers, and on the other hand there are complete inflection classes with and without gender distinctions. Because there are some inflection classes which can appear with two genders, it is interesting to ask how well we can distinguish these cases.  Additionally, because we are mostly interested in seeing how the clusters work, we can compare whether predicting inflection class without gender produces similar clusters to those we get when predicting inflection class with gender.
+\is{inflection!class}
 
 We start with the \isi{singular} markers with the formula: \texttt{singular $\sim$ final.1 + final.2 + final.3 + n\_vowels}\footnote{The model had no hidden nodes and a decay rate of 0.}. The results are given in \tabref{tab:singular-romanian} and \tabref{tab:singular-romanian-stats}. We see that the singular marker, as defined here, is relatively predictable, but not perfectly.
 
@@ -857,6 +861,7 @@ We now turn to plural markers. The model used is the same as for \isi{singular} 
 
 
 Now we address the claims by \textcite{Bateman.2010} that gender does not really help to determine the plural marker a noun will take, and that plural class assignment is solely based on phonological features (including the singular marker). Properly testing this claim is not possible because the authors do not provide a full model for plural assignment. However, one can compare a model that only includes phonological features (and the singular marker) to one which also includes gender.\footnote{Of course, there is always the possibility that a better model, solely based on phonological features, would outperform the model presented here.} We fit a model with the formula: \texttt{plural $\sim$ final.1 + final.2 + final.3 + n\_vowels + singular + gender}. The results can be seen in \tabref{tab:plural-romanian-2} below.
+\is{confusion matrix}
 
 \begin{table}
   \centering

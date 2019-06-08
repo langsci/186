@@ -124,6 +124,7 @@ In terms of pre-processing, Swahili has a series of digraphs (e.g. \textit{mb} $
 
 \largerpage
 In our first model we investigate whether the first and second segments of the stem (that is, after removing the class prefixes) can predict to any degree the inflectional class of Swahili nouns with the model \texttt{class $\sim$ first.1 + first.2}.\footnote{With 0 hidden nodes and a decay rate of 0.1. A more complex model with interactions did not perform any better.} The results, shown in \tabref{tab:class-swa} and \tabref{tab:class-swa-stats}, are not very good in themselves. The accuracy is barely above chance, and the kappa score is very small. This basically means that there is very little information about inflection class just in the phonological shape of the stem. But this result is not really surprising. Swahili speakers encounter nouns with the prefix or some agreeing forms, and there is little ambiguity about their class.
+\is{confusion matrix}
 
 \begin{table}
   \centering
@@ -193,7 +194,7 @@ Next, we compare this model to one where we use the endings of the nouns instead
 \end{table}
 
 Finally, we try a model that combines the first two segments of the noun, the last segment, and length in letters with the formula: \texttt{class $\sim$ final.1 + first.1 + first.2 + length}. The results are presented in \tabref{tab:class-swa-last-first} and \tabref{tab:class-swa-last-first-stats}. This model shows a slight improvement from the model only using the first segments.
-
+\is{confusion matrix}
 
 \begin{table}
   \centering
@@ -304,6 +305,7 @@ For this case study I used the inflection class database by \textcite{Feist.2015
 \subsection{Results}
 
 In terms of complexity, the model for Otomi is probably the one with the most factors. As predictors, I included the first three segments (with an interaction between the first and second segment), the last two segments, the tone of the citation form, and whether the verb is transitive or not: \texttt{class $\sim$ first.1 * first.2 + first.3 + Transitivity + last.1 + last.2 + tone}.\footnote{The model contained no hidden nodes and a decay rate of 0.1.} The confusion matrix for this model is shown in \tabref{tab:class-otomi-cm} and the accuracy measures in \tabref{tab:class-otomi-stats}.
+\is{confusion matrix}
 
 \begin{table}
   \centering
