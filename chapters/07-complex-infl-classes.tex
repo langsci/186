@@ -78,6 +78,7 @@ The second and third person \isi{singular} and the third person \isi{plural} exp
   \end{tabular}\caption{Simple present paradigm of Spanish regular verbs}\label{tab:sp-verb-paradigm}
 \end{table}
 
+\largerpage
 Some alternative descriptions of the Spanish system have been proposed before. \textcite{Boye.2006} suggest that thematic vowels seem to be a property of stems rather than verbs themselves. The authors base this claim on the fact that some irregular verbs show signs of having a different thematic vowel in certain stems: \textit{andar} `to go, walk' - \textit{anduv\emph{e}} (1sg preterite) and \textit{anduv\emph{i}ste} (2sg preterite). This might very well be the case, but it is a very  rare phenomenon in Spanish, and it is currently eroding for \textit{andar}, with speakers using the more regular forms: \textit{andé} and \textit{andaste}. I will exclusively focus on the infinitive stem of the verb, and its changes for the present \isi{singular}, past participle and gerund. For these cells, even a verb like \textit{andar} uses the same stem: \textit{ando}, \textit{andado}, \textit{andando}, respectively.
 I will keep the traditional view of the Spanish system of having thematic vowels being a property of lexemes, and three main inflection classes based on said thematic vowels.
 
@@ -108,6 +109,7 @@ The main process responsible for the minor conjugation patterns is diphthongizat
 
 There are three macroclasses of verbal inflection: \textit{ar}, \textit{ir} and \textit{er}, responsible for the inflectional endings, and multiple other minor (stem) patterns responsible for stem alternations in certain cells of the paradigm. The exact number of classes depends on how one classifies them and groups them. \textcite{Mateo.1995} find around 90 classes, but many of these are verb-specific. I take a more conservative approach where I only take into account classes with more than one lexeme. Although different partitions of the stem patterns are possible, I will focus exclusively on those shown in \tabref{tab:sp-verb-minor}.
 
+\largerpage
 An important point here is that many of the stem alternation classes in \tabref{tab:sp-verb-minor} can also apply to nouns and adjectives: \textit{c\emph{ue}nto} `tale', \textit{v\emph{e}jez} `old age', \textit{v\emph{ie}jo} `old', \textit{p\emph{o}blado} `populated', \textit{p\emph{o}blación} `population', \textit{p\emph{ue}blo} `town'. Although I will only focus on verbs, the same hierarchy could be used for modelling stem alternations in nouns and adjectives. This is further evidence for the independence of thematic vowels from stem alternations.
 
 \subsection{Previous takes on the Spanish verbal system}
@@ -359,7 +361,7 @@ As stated before, these are simply sketches, and a more formal analysis could pr
 
 \subsection{Materials}
 \largerpage 
-For this section I first extracted all verbs from a Spanish frequency list based on subtitle corpora.\footnote{Found at: \url{https://invokeit.wordpress.com/frequency-word-lists/, visited 8-11-2016}.} From this list I extracted all lemmas using TreeTagger \autocite{Schmid.1995a}. This produced a list of 4271 lemmas, from which I removed all reflexive forms, verbs without complete conjugation paradigms, and verbs whose stem is too short to play a role in an analogical model (e.g. \textit{ir}). The final list was comprised by 3052 verb lemmas, for which I produced all three principal parts.
+For this section I first extracted all verbs from a Spanish frequency list based on subtitle corpora.\footnote{Found at: \url{https://invokeit.wordpress.com/frequency-word-lists/}, visited 8-11-2016.} From this list I extracted all lemmas using TreeTagger \autocite{Schmid.1995a}. This produced a list of 4271 lemmas, from which I removed all reflexive forms, verbs without complete conjugation paradigms, and verbs whose stem is too short to play a role in an analogical model (e.g. \textit{ir}). The final list was comprised by 3052 verb lemmas, for which I produced all three principal parts.
 
 Extracting the stem of the verbs was relatively easy in this case, because we define the infinitive stem as the verb minus the thematic vowel and final \textit{r}. Additionally, to control for orthography I replaced all letter pairs that represent a single \isi{phoneme} with a single symbol (e.g. \textit{ch} $\rightarrow$ \textit{C}, \textit{ll} $\rightarrow$ \textit{L}, etc.). Because of the imbalance seen in the proportion of \textit{ar} verbs vs all other verbs, I left only in the dataset the 300 most frequent \textit{ar} verbs, which produced a 808-verb dataset\footnote{It is worth mentioning here that leaving all verbs in the dataset did not produce significantly worse results in the models, but did introduce a confound when interpreting the role of \textit{ar--non-alternating}. The accuracy metrics used are somewhat sensitive to these imbalances, and the accuracy of a model will be very high if the model always predicts the most frequent class. This sometimes makes models over-generalize towards the more frequent class and ignore patterns in the less frequent classes. Ultimately this is a weakness of the models I am using which could possibly be overcome with a different approach.}. I present side by side statistical results from the smaller dataset and the complete dataset, but focus on the distributions obtained with the smaller dataset.
 
@@ -452,7 +454,7 @@ We start with the model predicting the major inflection pattern. This model only
     \caption{Statistics for \tabref{tab:spanish-verbs-theme-v-2}}
     \label{tab:spanish-verbs-theme-v-stats-2}
 \end{table}
-\clearpage  
+%\clearpage  
 
 \begin{table}
     
@@ -705,6 +707,7 @@ For Spanish, it is also interesting to compare the model to the experimental res
 
 Since we are now predicting experimental data, we can use the complete dataset (with 3000 verbs) without doing any splitting. As the experimental dataset only contains information about mid vowel diphthongs, we have to fit a model trained to predict only this factor. In this case, the previous formula for fitting the model did not perform as well. A more structurally defined model did a much better job: \texttt{diphthong $\sim$ final.1 + final.2 + pre-theme vowel * theme vowel + n\_clusters}\footnote{Because we are now predicting probabilities, using the \texttt{linout} linking function produces better results. The model had no hidden nodes and only a skip layer.}.
 
+\largerpage
 This model also takes the final and prefinal segments of the \isi{stem}, but additionally identifies the pre-thematic vowel interacting with thematic vowel, and the number of consonant clusters\footnote{I take any two consonants appearing together to be a consonant cluster.}. The reason for also adding the thematic vowel is simple. Albright presents a model trained exclusively on \textit{ar} verbs. Adding the thematic vowel in this case means that the model knows what the main portion of the dataset it should look at is when making the predictions, but also has the rest of the dataset to learn from. This is important because our model is less capable of making large phonological generalizations than Albright's is, and every bit of data matters.
 
 When predicting the wugs, the model achieved a correlation of $r=0.59$ ($p<0.05$), which is quite close to the generalized context model \textcite{Albright.2009} reports on ($r=0.56$). It is, however, considerably below the minimal generalization learner ($r=0.77$). The predicted probabilities in \figref{fig:corr-plot} show where the problem lies. The analogical model has difficulties with some wugs ending in complex clusters. This is because these particular combinations are either not present in the data (\textit{etC} is missing) or very rare (\textit{otr} has a frequency of 1). This shows that the generalizations the model makes are too local, and not general enough to capture weird looking wugs correctly. Nevertheless, this is not a bad performance in the sense that the model seems to have some sort of correlate with speaker's intuitions, particularly regarding wugs that do look like observed words. Those cases where speakers were much less likely to allow for diphthongs are also completely disallowed by the model.
@@ -733,7 +736,7 @@ Kasem is a Gur Language, of the Grusi branch, spoken mostly in Ghana and Burkina
 a class is considered \isi{singular} if the majority of its members are singular, semantically and grammatically; and \isi{plural} if the majority of its membership is grammatically and semantically plural. There are four singular classes and five plural classes. A pairing of a singular and a plural class constitutes a gender \autocite[4]{Awedoba.2003}
 \end{quotation}
 
-Gender is defined with relation to the agreement of the noun with the determiner (most adjectives do not agree at all, and those which do have inherent markers). \textcite[3]{Awedoba.2003} proposes the  classification shown in \tabref{tab:gender-class-kasem} (adapted from the original, and with additional information from \citealt{Awedoba.1980} and \citealt{Awedoba.1996})\footnote{Other sources label the genders with letters from A to E \autocite{Callow.1965}.}. I will show in the following sections that this approach is insufficient to properly capture the complexity of the Kasem system. Nonetheless, the organization in \tabref{tab:gender-class-kasem} already gives us an idea of what the problem is (for work on the noun class systems of related languages see \citealt{Brindle.2009}, \citealt{Bodomo.1994}, \citealt{Bodomo.1997}, and \citealt{Dakubu.1997}): there are five genders based on agreement patterns with pronouns\footnote{The literature does not present any clear examples, but it is mentioned.}, and many more number markers that do not correspond 1 to 1 with said genders. In a way, this is a similar situation to the Romanian system discussed in Chapter \ref{chap:gender-assignment}.
+Gender is defined with relation to the agreement of the noun with the determiner (most adjectives do not agree at all, and those which do have inherent markers). \textcite[3]{Awedoba.2003} proposes the  classification shown in \tabref{tab:gender-class-kasem} (adapted from the original, and with additional information from \citealt{Awedoba.1980} and \citealt{Awedoba.1996})\footnote{Other sources label the genders with letters from A to E \autocite{Callow.1965}.}. I will show in the following sections that this approach is insufficient to properly capture the complexity of the Kasem system. Nonetheless, the organization in \tabref{tab:gender-class-kasem} already gives us an idea of what the problem is (for work on the noun class systems of related languages see \citealt{Brindle.2009}, \citealt{Bodomo.1994}, \citealt{Bodomo.1997}, and \citealt{Dakubu.1997}): there are five genders based on agreement patterns with pronouns\footnote{The literature does not present any clear examples, but it is mentioned.}, and many more number markers that do not correspond 1 to 1 with said genders. In a way, this is a similar situation to the Romanian system discussed in Chapter~\ref{chap:gender-assignment}.
 \is{gender}
 
 \begin{table}[!htb]
@@ -1121,7 +1124,7 @@ The example in \REF{rusg-kasem-2} shows that there are at least two apparent exc
 
 \subsubsection{The \textit{-m} marker}
 
-\largerpage 
+%\largerpage 
 A particularly hard case is found in the \textit{-Vm}/\textit{-nV} pairs, like those shown in \REF{nm-exe}.
 
 \begin{exe}
@@ -1141,6 +1144,7 @@ There are several possible analyses for these examples. The more phonological on
     \ex \textsc{sg} baloja\textit{na} \textsc{pl} baleja\textit{m} `Buzzard'
 \end{exe}
 
+\largerpage[2]
 If these were a purely phonological process, the symmetry would be a bit suspicious. Particularly, cases like those in \REF{except-m} are more in line with an \textit{-m} marker, rather than an /m/ stem and coalescence.
 
 \begin{exe}
@@ -1393,7 +1397,7 @@ In the cases of polysemy I left all entries in the table:
     \end{xlist}
 \end{exe}
 
-\largerpage[2]
+%\largerpage[2]
 As we have seen in multiple examples already, Kasem, just like Hausa, presents some overabundance in the \isi{plural} forms:
 
 \begin{exe}
@@ -2056,6 +2060,7 @@ In this case it is also useful to look at the balanced by-class accuracy of the 
 \is{hierarchical clustering}
 Finally, the clustering created by this model\footnote{As before, we fit a direct similarity model instead of relying on the errors of the analogical model.} presents several crucial results. Like in Spanish, this is the most interesting aspect of the models. The first thing we can observe is that the larger (color coded) clusters are not homogenous with respect to the features that seem to define them. There are several important clusters to look at here. On the left top corner, in dark green, we find an inversion \textit{-i/-ə} -- \textit{-ə/-i}, next to \textit{-u/-ə} which fits the general pattern of an \textit{-ə} with a high vowel. To the right, and around the -0.5 X axis, we find three classes: \textit{-ə/-ə}, \textit{-i/-i} and \textit{-u/-u}. The first two are close to each other and clustered together, while the last class is clustered separate from the other two, but it is placed quite close to them on the map.
 
+\largerpage
 Close, and tightly grouped together, we find two clusters, one in dark blue and one in light lilac. These two clusters all share an \textit{-iə} marker, except for one which only has a \textit{-ə} marker. In dark blue we see an inversion between \textit{-iə/-i} and \textit{-i/-iə}, and in light lilac a partial inversion of \textit{-iə} marking singular and plural. The next color clusters are less well organized from a perspective of a potential hierarchy, but from their position they make sense. On the lower right corner we see three classes that share an \textit{-o} in the singular and \textit{-u} in the plural, with some additional \textit{-g-}, \textit{-r-} and \textit{-ŋ-}. Right at the 0.5 X and -0.25 Y we find other two classes with a \textit{-ru} marking plural (again, close to the \textit{-o/-ru} and \textit{-go/-ru} classes).
 
 Right at the center of the map we see three classes: \textit{-u/-iinə}, \textit{-m/-ə} and \textit{-ə/-si}. These classes only share the \textit{-ə} marker (or /ə/ segment in the case of \textit{-innə}), but they have in common that they have one marker not shared by any other class. At the same X coordinate, but at around 0.5 Y, we have two close classes having a \textit{-[+velar]ə} marker for the singular and \textit{-i} in the plural, and not too far off we have the very similar \textit{-ŋə/-in} class (arguably the class \textit{-gə/-$\emptyset$} is also related to these three classes). A class that seems somewhat out of place is the \textit{-gu/-ru} class, also in dark orange. Finally, in the top right corner we have two groups. In light blue we have classes with \textit{-ə/-e} plus additional markers, and in dark lilac we have the inversion \textit{-nə/-m} -- \textit{-m/-nə}.

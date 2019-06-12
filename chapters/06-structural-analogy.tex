@@ -240,24 +240,22 @@ This figure basically shows that the main effect comes from the first segment, b
 
 The model including both beginning and ending of the nouns clearly performed better, and even though the main effect came from the beginning of the nouns, the ending did play a role.
 
-%\largerpage[2]
+\largerpage
 It is possible that the current analogical relations of the Swahili noun classes are the product of some previous more regular system \autocite{Nurse.1993}, and not of actual productive schemas speakers use. Because the analogical effects are so weak, the most likely explanation in this case is that the semantic component is much stronger, and thus phonological analogy is not as important for speakers. The important point here is that we do see a stronger effect of the beginning of the stem 
-than of the ending of the stem.
-\il{Swahili|)}
-\is{prefixation|)}
+than of the ending of the stem.%
+\il{Swahili|)}%
+\is{prefixation|)}%
 \is{inflection!nominal|)}
 
 \section{Prefixes and inflection classes: Eastern Highland Otomi}
 
-\is{inflection!verbal|(}
-\il{Highland Otomi|(}
-\is{prefixation|(}
-
 \subsection{Verb classes in Eastern Highland Otomi}
 
+\is{inflection!verbal|(}\il{Highland Otomi|(}\is{prefixation|(}%
 Eastern Highland Otomi (Otomi from now on) is a Mesoamerican language of the Otoman\-guean family spoken in Mexico \autocite{Echegoyen.1979}. The Otomi verb system is relevant for the proposal in this book because, like in Swahili, it has inflection classes where the actual inflection is produced by a prefix instead of a suffix.
 
 % Otomí orthography has 13 vowels and 20 consonants. ʉøëẹạ aeiou
+\largerpage
 The verbs are organized in four classes according to \textcite{Echegoyen.1979}, and five classes according to \textcite{Feist.2015}. Examples of these classes can be found in \tabref{tab:class-otomi}.
 
 \begin{table}
@@ -358,11 +356,10 @@ The important fact regarding Otomi is the relative effects of the different fact
   \includegraphics[width=0.9\textwidth]{./figures/otomi/fact-imp.pdf}
   \caption{Additive (left) and subtractive (right) accuracy and kappa scores for the model predicting inflection class}\label{fig:fact-imp-otomi}
 \end{figure}
-
+\largerpage
 Once more, classes that trigger prefixing processes are predictable from analogies based on the beginning of words, much more so than analogies based on the endings. The fact that the endings did play a minor role is interesting. It probably means that both Otomi and Swahili are susceptible to word size schemas, similar to how in German nouns gender is determined by both initial and final segments \autocite{Kopcke.1984}.% Clustering based on similarity may or may not correspond to a possible class hierarchy.
-
-\il{Highland Otomi|)}
-\is{inflection!verbal|)}
+\il{Highland Otomi|)}%
+\is{inflection!verbal|)}%
 \is{prefixation|)}
 
 \section{Stem changing processes: Hausa plural classes}
@@ -434,7 +431,7 @@ The results of this model can be seen in \figref{fig:class-hausa-cm} and the cor
 
 
 For comparison, a model that does not specify structural analogy: \texttt{plural class $\sim$ final.1*T.1 + final.2 + final.3 + CVCV.4 + length}\footnote{The model included no hidden nodes and a decay rate of 0.1.}, can be seen in \tabref{tab:class-hausa-stats-2}. It is not surprising that this model also performs relatively well, after all, the predictor \texttt{final.1} captures the same information as the predictor \texttt{V.1}.
-\largerpage[2]
+%\largerpage[2]
 \begin{table}%[h!]
   \centering
   \begin{tabular}{rl}
@@ -450,7 +447,7 @@ For comparison, a model that does not specify structural analogy: \texttt{plural
   \caption{Accuracy scores for \figref{fig:class-hausa-cm}}\label{tab:class-hausa-stats}
 \end{table}
 
-\clearpage
+%\clearpage
 \begin{figure}%[h!]
   \includegraphics[width=0.9\textwidth]{./figures/hausa/plurals-cm.pdf}
   \caption{Heatmap for the model predicting plural forms in Hausa}\label{fig:class-hausa-cm}
